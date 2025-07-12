@@ -11,24 +11,24 @@ const Footer = () => {
         src="/assets/GroupFooterBg.png"
         alt="footer bg"
         fill
-        className="absolute top-0 left-0 object-cover z-0"
+        className="absolute top-0 left-0 z-10"
       />
       <Image
         src="/assets/VectorGroupFooter.png"
         alt="vector 1"
         width={100}
         height={100}
-        className="absolute top-0 right-0 opacity-50"
+        className="absolute top-0 right-0 w-full h-full z-10"
       />
       <Image
         src="/assets/VectorGroupFooter2.png"
         alt="vector 2"
         width={100}
         height={100}
-        className="absolute bottom-0 left-0 opacity-50"
+        className="absolute bottom-0 left-0 w-full h-full z-20"
       />
 
-      <div className="relative z-10 flex flex-col md:flex-row justify-between gap-12 text-sm md:text-base">
+      <div className="relative z-50 flex flex-col md:flex-row justify-between gap-12 text-sm md:text-base">
         {/* Left side */}
         <div className="md:w-1/3">
           <Image
