@@ -142,7 +142,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Image
-                  src="/assets/Mail.svg"
+                  src="/assets/mail.svg"
                   alt="Mail"
                   width={18}
                   height={18}
@@ -154,7 +154,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Image
-                  src="/assets/Call.svg"
+                  src="/assets/call.svg"
                   alt="Call"
                   width={18}
                   height={18}
