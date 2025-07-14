@@ -87,15 +87,15 @@ const Hero = () => {
           </div>
 
           {/* Quote Message Card */}
-          <div className="absolute bottom-8 sm:bottom-12 lg:bottom-16 left-[50%] lg:left-[40%] translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[200px] sm:w-[220px] lg:w-[241px] h-[120px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[10px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20">
+          <div className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[40%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20">
             <Image
               src="/assets/quote.svg"
               alt="quote"
-              width={30}
-              height={22}
+              width={25}
+              height={18}
               className="mb-1 sm:w-[35px] sm:h-[26px] lg:w-[41px] lg:h-[30px]"
             />
-            <p className="text-xs sm:text-sm lg:text-[15px] pl-4 sm:pl-5 lg:pl-6 font-medium">
+            <p className="text-xs sm:text-sm lg:text-[15px] pl-3 sm:pl-5 lg:pl-6 font-medium">
               Our mission is to <br />
               transform the way you design
             </p>
