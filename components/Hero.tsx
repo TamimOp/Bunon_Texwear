@@ -58,7 +58,10 @@ const Hero = () => {
           </div>
 
           {/* Right: Gallery */}
-          <div className="flex gap-4 justify-center md:justify-end">
+          <div className="relative flex gap-4 justify-center md:justify-end">
+            {/* Background Ellipse */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[520px] h-[523px] flex-shrink-0 rounded-[523px] bg-[#007EC8] blur-[100px] -z-10"></div>
+
             {[1, 2, 3].map((num) => (
               <div
                 key={num}
