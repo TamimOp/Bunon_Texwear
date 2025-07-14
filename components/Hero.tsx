@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <>
       {/* Main Hero Section with Background */}
-      <section className="relative w-full text-white overflow-hidden ">
+      <section className="relative w-full text-white overflow-hidden">
         {/* Background Vector */}
         <Image
           src="/assets/HeroVectorBg.png"
@@ -15,6 +15,9 @@ const Hero = () => {
           fill
           className="object-cover opacity-100 -z-10"
         />
+
+        {/* Left Side Ellipse Background - 30% out of screen */}
+        <div className="absolute top-1/3 -translate-y-1/2 -left-[10%] w-[575px] h-[580px] flex-shrink-0 rounded-[580px] bg-[#091E6F] blur-[86.05px] -z-5"></div>
 
         <div className="max-w-7xl mx-auto px-6 pt-50 pb-16 grid md:grid-cols-2 gap-12 items-start relative z-10">
           {/* Left Content */}
@@ -77,21 +80,6 @@ const Hero = () => {
                 />
               </div>
             ))}
-          </div>
-
-          {/* Quote Message Card */}
-          <div className="absolute bottom-16 left-[50%] md:left-[40%] translate-x-[-50%] md:translate-x-0 text-white flex flex-col items-start p-4 w-[241px] h-[135.498px] flex-shrink-0 rounded-[13px] bg-[rgba(2,86,151,0.78)]">
-            <Image
-              src="/assets/quote.svg"
-              alt="quote"
-              width={41}
-              height={30}
-              className="mb-1"
-            />
-            <p className="text-[15px] pl-6 font-medium">
-              Our mission is to <br />
-              transform the way you design
-            </p>
           </div>
         </div>
 
