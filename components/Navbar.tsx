@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-gradient-to-b from-[#001133] to-[#001a3c] relative">
+    <nav className="w-full absolute top-0 left-0 z-50">
       <div className="px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex-shrink-0">

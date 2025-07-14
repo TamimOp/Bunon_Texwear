@@ -18,7 +18,7 @@ const Footer = () => {
         alt="vector 1"
         width={1097}
         height={384}
-        className="absolute top-0 right-0 w-full h-full object-cover z-10"
+        className="absolute top-0 right-0 w-full h-full object-contain z-10"
       />
       <Image
         src="/assets/VectorGroupFooter2.png"
