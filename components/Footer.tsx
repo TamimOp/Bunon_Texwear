@@ -28,7 +28,7 @@ const Footer = () => {
         className="absolute bottom-0 left-0 w-full h-full object-cover z-20"
       />
 
-      <div className="relative z-50 flex flex-col lg:flex-row justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 text-sm sm:text-base">
+      <div className="relative flex flex-col lg:flex-row justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 text-sm sm:text-base">
         {/* Left side */}
         <div className="lg:w-1/3 xl:w-2/5">
           <Image
