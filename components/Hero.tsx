@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative w-full text-white overflow-hidden">
+    <section className="relative w-full text-white overflow-hidden pb-20">
       {/* Background Vector */}
       <Image
         src="/assets/HeroVectorBg.png"
@@ -19,7 +19,7 @@ const Hero = () => {
         <div>
           <p className="text-[#009BF3] text-2xl font-medium">Welcome</p>
           <h1 className="text-[65px] font-bold leading-tight mt-2">
-            <span className="text-[#B4FF63]">Perfaction</span> In Every <br />
+            <span className="text-[#B4FF63]">Perfection</span> In Every <br />
             <span className="text-white">Stitch</span>
           </h1>
 
@@ -34,23 +34,13 @@ const Hero = () => {
           <div className="mt-8 flex flex-wrap gap-4 text-xl">
             <Link
               href="#"
-              className="text-white px-6 py-3 font-bold hover:scale-105 transition-transform"
-              style={{
-                borderRadius: "42px",
-                background: "linear-gradient(90deg, #0082C9 0%, #0052C4 100%)",
-                boxShadow: "5px 4px 17.5px 0px rgba(0, 130, 201, 0.51)",
-              }}
+              className="text-white px-6 py-3 font-bold hover:scale-105 transition-transform rounded-[42px] bg-gradient-to-r from-[#0082C9] to-[#0052C4] shadow-[5px_4px_17.5px_0px_rgba(0,130,201,0.51)]"
             >
               View more details
             </Link>
             <Link
               href="#"
-              className="text-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-all"
-              style={{
-                borderRadius: "42px",
-                border: "2px solid #FFF",
-                boxShadow: "5px 4px 17.5px 0px rgba(255, 255, 255, 0.25)",
-              }}
+              className="text-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-all rounded-[42px] border-2 border-white shadow-[5px_4px_17.5px_0px_rgba(255,255,255,0.25)]"
             >
               Buy product
             </Link>
@@ -70,15 +60,9 @@ const Hero = () => {
           {[1, 2, 3].map((num) => (
             <div
               key={num}
-              className={`relative flex-shrink-0 rounded-[11px] overflow-hidden ${
+              className={`relative flex-shrink-0 rounded-[11px] overflow-hidden w-[190.779px] h-[517.221px] bg-gradient-to-b from-[rgba(38,147,247,0.18)] to-[rgba(66,128,0,0.19)] ${
                 num === 2 ? "mt-12" : ""
               }`}
-              style={{
-                width: "190.779px",
-                height: "517.221px",
-                background:
-                  "linear-gradient(180deg, rgba(38, 147, 247, 0.18) 0%, rgba(66, 128, 0, 0.19) 100%)",
-              }}
             >
               <Image
                 src={`/assets/galleryImage${num}.jpg`}
@@ -91,16 +75,7 @@ const Hero = () => {
         </div>
 
         {/* Quote Message Card */}
-        <div
-          className="absolute bottom-16 left-[50%] md:left-[40%] translate-x-[-50%] md:translate-x-0 text-white flex flex-col items-start p-4"
-          style={{
-            width: "241px",
-            height: "135.498px",
-            flexShrink: 0,
-            borderRadius: "13px",
-            background: "rgba(2, 86, 151, 0.78)",
-          }}
-        >
+        <div className="absolute bottom-16 left-[50%] md:left-[40%] translate-x-[-50%] md:translate-x-0 text-white flex flex-col items-start p-4 w-[241px] h-[135.498px] flex-shrink-0 rounded-[13px] bg-[rgba(2,86,151,0.78)]">
           <Image
             src="/assets/quote.svg"
             alt="quote"
@@ -115,18 +90,27 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Partnering Text */}
+      <div className="flex justify-start max-w-7xl mx-auto px-6">
+        <h2 className="w-[458px] text-[#AEEE6A] font-light text-[28px] leading-[118.4%] capitalize font-['Poppins']">
+          Partnering with leading global brands.
+        </h2>
+      </div>
+
       {/* Company Logos */}
-      <div className="mt-20 py-8 px-4 bg-white flex flex-wrap justify-center gap-12">
-        {[1, 2, 3, 4].map((num) => (
-          <Image
-            key={num}
-            src={`/assets/companyLogo${num}.svg`}
-            alt={`Company Logo ${num}`}
-            width={120}
-            height={40}
-            className="object-contain"
-          />
-        ))}
+      <div className="mx-auto mt-8 flex flex-col justify-center items-center w-[1108px] h-[132px] px-[8.362px] gap-[8.362px] flex-shrink-0 rounded-[11px] bg-white">
+        <div className="flex flex-wrap justify-center gap-12">
+          {[1, 2, 3, 4].map((num) => (
+            <Image
+              key={num}
+              src={`/assets/companyLogo${num}.svg`}
+              alt={`Company Logo ${num}`}
+              width={120}
+              height={40}
+              className="object-contain"
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
