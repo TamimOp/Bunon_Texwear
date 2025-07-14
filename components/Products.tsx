@@ -17,7 +17,7 @@ const productData = [
 
 const Products = () => {
   return (
-    <section className="relative text-white py-20 overflow-hidden">
+    <section className="relative text-white py-30 overflow-hidden">
       {/* Background Ellipses */}
       <div className="absolute bottom-0 right-0 z-0 pointer-events-none">
         <Image
@@ -38,7 +38,7 @@ const Products = () => {
 
       {/* Title */}
       <div className="text-start mb-12 relative z-10 pl-25">
-        <h2 className="text-4xl font-bold leading-snug">
+        <h2 className="text-[54px] font-bold leading-snug">
           <span className="text-[#B4FF63]">Offering</span> a diverse range of{" "}
           <br /> products.
         </h2>
