@@ -83,6 +83,21 @@ const Hero = () => {
               </div>
             ))}
           </div>
+
+          {/* Quote Message Card */}
+          <div className="absolute bottom-16 left-[50%] md:left-[40%] translate-x-[-50%] md:translate-x-0 text-white flex flex-col items-start p-4 w-[241px] h-[135.498px] flex-shrink-0 rounded-[13px] bg-[rgba(2,86,151,0.78)]">
+            <Image
+              src="/assets/quote.svg"
+              alt="quote"
+              width={41}
+              height={30}
+              className="mb-1"
+            />
+            <p className="text-[15px] pl-6 font-medium">
+              Our mission is to <br />
+              transform the way you design
+            </p>
+          </div>
         </div>
 
         {/* Partnering Text */}
