@@ -68,7 +68,7 @@ const Hero = () => {
             {[1, 2, 3].map((num) => (
               <div
                 key={num}
-                className={`relative flex-shrink-0 rounded-[11px] overflow-hidden w-[190.779px] h-[517.221px] bg-gradient-to-b from-[rgba(38,147,247,0.18)] to-[rgba(66,128,0,0.19)] ${
+                className={`relative flex-shrink-0 rounded-[11px] overflow-hidden w-[190.779px] h-[517.221px] ${
                   num === 2 ? "mt-12" : ""
                 }`}
               >
@@ -78,6 +78,8 @@ const Hero = () => {
                   fill
                   className="object-cover"
                 />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[rgba(38,147,247,0.18)] to-[rgba(66,128,0,0.19)] z-10"></div>
               </div>
             ))}
           </div>
