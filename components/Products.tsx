@@ -17,7 +17,7 @@ const productData = [
 
 const Products = () => {
   return (
-    <section className="relative bg-[#001133] text-white py-20 overflow-hidden">
+    <section className="relative text-white py-20 overflow-hidden">
       {/* Background Ellipses */}
       <div className="absolute bottom-0 right-0 z-0 pointer-events-none">
         <Image
@@ -70,7 +70,7 @@ const Products = () => {
 
               {/* Vertical Text - BOTTOM RIGHT POSITION */}
               <div
-                className={`absolute right-4 z-20 ${
+                className={`absolute right-4 z-20 group-hover:opacity-0 transition-opacity duration-300 ${
                   label === "Sweatshirts" ? "bottom-60" : "bottom-42"
                 }`}
               >
@@ -99,14 +99,16 @@ const Products = () => {
               } group-hover:opacity-60 transition-opacity duration-300`}
             />
 
-            {/* Featured Arrow */}
-            {featured && (
-              <div className="absolute inset-0 flex items-center justify-center z-30">
-                <div className="w-10 h-10 rounded-full bg-[#B4FF63] flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                  <span className="text-[#001133] text-xl font-bold">→</span>
-                </div>
-              </div>
-            )}
+            {/* Arrow on Hover */}
+            <div className="absolute inset-0 flex items-center justify-center z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Image
+                src="/assets/Arrow.svg"
+                alt="Arrow"
+                width={40}
+                height={40}
+                className="hover:scale-110 transition-transform"
+              />
+            </div>
           </div>
         ))}
       </div>
