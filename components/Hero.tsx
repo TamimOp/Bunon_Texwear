@@ -14,16 +14,16 @@ const Hero = () => {
         className="object-cover opacity-100 -z-10"
       />
 
-      <div className="max-w-7xl mx-auto px-6 pt-34 pb-16 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 pt-50 pb-16 grid md:grid-cols-2 gap-12 items-start relative z-10">
         {/* Left Content */}
         <div>
-          <p className="text-white text-lg font-medium">Welcome</p>
-          <h1 className="text-5xl font-bold leading-tight mt-2">
+          <p className="text-[#009BF3] text-2xl font-medium">Welcome</p>
+          <h1 className="text-[65px] font-bold leading-tight mt-2">
             <span className="text-[#B4FF63]">Perfaction</span> In Every <br />
             <span className="text-white">Stitch</span>
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-gray-200 max-w-md">
+          <p className="mt-6 text-[21px] leading-relaxed text-gray-200 max-w-xl">
             Bunon Texwear Ltd. An OEM Clothing Manufacturer, Exporter & Buying
             Agent. We Have Started Our Journey In 1998. With A Huge Experience
             Of Circular Knit Garments Field, We Are Committed To One Stop
@@ -31,16 +31,26 @@ const Hero = () => {
           </p>
 
           {/* Buttons */}
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-4 text-xl">
             <Link
               href="#"
-              className="bg-gradient-to-r from-[#3AC0FF] to-[#1675E0] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:scale-105 transition-transform"
+              className="text-white px-6 py-3 font-bold hover:scale-105 transition-transform"
+              style={{
+                borderRadius: "42px",
+                background: "linear-gradient(90deg, #0082C9 0%, #0052C4 100%)",
+                boxShadow: "5px 4px 17.5px 0px rgba(0, 130, 201, 0.51)",
+              }}
             >
               View more details
             </Link>
             <Link
               href="#"
-              className="border border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all"
+              className="text-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-all"
+              style={{
+                borderRadius: "42px",
+                border: "2px solid #FFF",
+                boxShadow: "5px 4px 17.5px 0px rgba(255, 255, 255, 0.25)",
+              }}
             >
               Buy product
             </Link>
@@ -60,7 +70,15 @@ const Hero = () => {
           {[1, 2, 3].map((num) => (
             <div
               key={num}
-              className="rounded-[20px] overflow-hidden w-32 md:w-36 lg:w-40 h-[280px] relative"
+              className={`relative flex-shrink-0 rounded-[11px] overflow-hidden ${
+                num === 2 ? "mt-12" : ""
+              }`}
+              style={{
+                width: "190.779px",
+                height: "517.221px",
+                background:
+                  "linear-gradient(180deg, rgba(38, 147, 247, 0.18) 0%, rgba(66, 128, 0, 0.19) 100%)",
+              }}
             >
               <Image
                 src={`/assets/galleryImage${num}.jpg`}
@@ -73,15 +91,24 @@ const Hero = () => {
         </div>
 
         {/* Quote Message Card */}
-        <div className="absolute bottom-16 left-[50%] md:left-[40%] translate-x-[-50%] md:translate-x-0 bg-[#05457D] text-white rounded-xl p-4 shadow-lg w-[260px] flex items-start gap-3">
+        <div
+          className="absolute bottom-16 left-[50%] md:left-[40%] translate-x-[-50%] md:translate-x-0 text-white flex flex-col items-start p-4"
+          style={{
+            width: "241px",
+            height: "135.498px",
+            flexShrink: 0,
+            borderRadius: "13px",
+            background: "rgba(2, 86, 151, 0.78)",
+          }}
+        >
           <Image
             src="/assets/quote.svg"
             alt="quote"
-            width={20}
-            height={20}
-            className="mt-1"
+            width={41}
+            height={30}
+            className="mb-1"
           />
-          <p className="text-sm font-medium">
+          <p className="text-[15px] pl-6 font-medium">
             Our mission is to <br />
             transform the way you design
           </p>
