@@ -82,7 +82,7 @@ const Articles = () => {
             md:absolute
             ${index === 0 ? "md:right-[90px] md:top-[80px]" : ""}
             ${index === 1 ? "md:right-[50px] md:top-[50px]" : ""}
-            ${index === 2 ? "md:-right-[15px] md:top-[20px]" : ""}
+            ${index === 2 ? "md:right-[0px] md:top-[20px]" : ""}
             rounded-[15px] px-3 py-3
         `}
                 style={{ position: "relative", background: "transparent" }}
