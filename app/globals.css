@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+.bg-review-gradient {
+  background: linear-gradient(
+    0deg,
+    #000 0%,
+    #071137 31.5%,
+    #091544 56.5%,
+    #0b1746 99%
+  );
+}
