@@ -23,7 +23,7 @@ const articles = [
 const Articles = () => {
   return (
     <section className="py-20 px-4 md:px-8 flex flex-col items-center">
-      <div className="max-w-7xl w-full mx-auto">
+      <div className="max-w-screen-2xl w-full mx-auto">
         {/* Heading */}
         <p className="text-[#009BF3] text-2xl font-semibold">New Blog</p>
         <h2 className="text-4xl md:text-[65px] font-bold text-white mt-2">
