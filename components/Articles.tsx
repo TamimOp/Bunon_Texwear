@@ -31,7 +31,7 @@ const Articles = () => {
         </h2>
 
         {/* Main Blog Container */}
-        <div className="relative mx-auto mt-16 flex rounded-[56px] bg-[#EDE9E6] overflow-visible w-[1148px] h-[725px]">
+        <div className="relative mx-auto mt-16 flex rounded-[56px] bg-[#EDE9E6] overflow-visible w-[1200px] h-[725px]">
           {/* Left Main Blog Card */}
           <div className="flex flex-col justify-between p-5 rounded-[27px] bg-[#1A1A1A] overflow-hidden relative z-10 w-[579px] h-[559px] mt-[60px] ml-[48px] flex-shrink-0">
             <div className="mx-auto relative overflow-hidden w-[533px] h-[300px] rounded-t-[24px] bg-[rgba(7,26,37,0.18)]">
@@ -72,7 +72,7 @@ const Articles = () => {
               const rightPositions = [
                 "right-[150px]",
                 "right-[100px]",
-                "right-[50px]",
+                "right-[40px]",
               ];
               return (
                 <div
@@ -90,7 +90,7 @@ const Articles = () => {
                     />
                   </div>
                   {/* Card Text */}
-                  <div className="ml-5 w-[220px]">
+                  <div className="ml-5 w-[280px]">
                     <p className="text-[19px] text-[#888888] mb-1">
                       <span className="text-[#0055C4] font-normal text-[19px]">
                         Category
