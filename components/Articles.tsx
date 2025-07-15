@@ -22,7 +22,12 @@ const articles = [
 
 const Articles = () => {
   return (
-    <section className="py-20 px-4 md:px-8 flex flex-col items-center">
+    <section
+      className="py-20 px-4 md:px-8 flex flex-col items-center"
+      style={{
+        background: "linear-gradient(180deg, #091442 0%, #002F6D 100%)",
+      }}
+    >
       <div className="max-w-screen-2xl w-full mx-auto">
         {/* Heading */}
         <p className="text-[#009BF3] text-2xl font-semibold">New Blog</p>
