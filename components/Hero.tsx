@@ -19,7 +19,7 @@ const Hero = () => {
         {/* Left Side Ellipse Background - 30% out of screen */}
         <div className="absolute top-1/3 -translate-y-1/2 -left-[10%] w-[400px] sm:w-[500px] lg:w-[575px] h-[400px] sm:h-[500px] lg:h-[580px] flex-shrink-0 rounded-full bg-[#091E6F] blur-[60px] sm:blur-[70px] lg:blur-[86.05px] -z-5"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 pt-24 sm:pt-32 md:pt-40 lg:pt-50 pb-8 sm:pb-12 lg:pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 pt-24 sm:pt-32 md:pt-40 lg:pt-50 pb-8 sm:pb-12 lg:pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
             <p className="text-[#009BF3] text-lg sm:text-xl lg:text-2xl font-medium">
@@ -87,7 +87,7 @@ const Hero = () => {
           </div>
 
           {/* Quote Message Card */}
-          <div className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[40%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20">
+          <div className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[48%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20">
             <Image
               src="/assets/quote.svg"
               alt="quote"
