@@ -55,7 +55,7 @@ const Articles = () => {
                   alt="Author"
                   width={56}
                   height={54}
-                  className="rounded-full object-cover"
+                  className="rounded-full border border-white object-cover object-top w-[56px] h-[53.621px] flex-shrink-0"
                 />
                 <div className="text-white text-base">
                   <p className="font-semibold">Mr. Sheikh Saadi</p>
@@ -66,45 +66,59 @@ const Articles = () => {
           </div>
 
           {/* Floating Article Cards */}
-          <div className="absolute top-[40px] right-[32px] h-full flex flex-col gap-6 z-20">
-            {articles.map((item, index) => (
-              <div key={index} className="flex items-center">
-                {/* Card Image with blue border and shadow */}
-                <div className="relative flex-shrink-0 w-[223px] h-[153px] rounded-[15px] border-4 border-[#2D69D1] shadow-[4px_6px_24.9px_4px_rgba(0,0,0,0.5)] overflow-hidden bg-cover bg-center">
-                  <Image
-                    src={item.img}
-                    alt={`card-${index}`}
-                    fill
-                    className="object-cover rounded-[15px]"
-                  />
-                </div>
-                {/* Card Text */}
-                <div className="ml-5 w-[220px]">
-                  <p className="text-xs text-gray-500 mb-1">
-                    <span className="text-[#2D69D1] font-semibold">
-                      Category
-                    </span>{" "}
-                    • 8 Min Read
-                  </p>
-                  <h4 className="text-base font-semibold text-gray-900 leading-tight">
-                    {item.title}
-                  </h4>
-                  <div className="flex items-center gap-2 mt-2">
+          <div className="absolute top-[90px] h-full flex flex-col gap-6 z-20 w-full pointer-events-none">
+            {articles.map((item, index) => {
+              // Set right position for each card
+              const rightPositions = [
+                "right-[150px]",
+                "right-[100px]",
+                "right-[50px]",
+              ];
+              return (
+                <div
+                  key={index}
+                  className={`flex items-center absolute ${rightPositions[index]} top-[${index} * 175}px] pointer-events-auto`}
+                  style={{ top: `${index * 175}px` }}
+                >
+                  {/* Card Image with blue border and shadow */}
+                  <div className="relative flex-shrink-0 w-[223px] h-[153px] rounded-[15px] border-4 border-[#2D69D1] shadow-[4px_6px_24.9px_4px_rgba(0,0,0,0.5)] overflow-hidden bg-cover bg-center">
                     <Image
-                      src="/assets/dp.jpg"
-                      alt="Author"
-                      width={20}
-                      height={20}
-                      className="rounded-full object-cover"
+                      src={item.img}
+                      alt={`card-${index}`}
+                      fill
+                      className="object-cover rounded-[15px]"
                     />
-                    <p className="text-xs text-gray-700 font-medium">
-                      Mr. Sheikh Saadi
+                  </div>
+                  {/* Card Text */}
+                  <div className="ml-5 w-[220px]">
+                    <p className="text-[19px] text-[#888888] mb-1">
+                      <span className="text-[#0055C4] font-normal text-[19px]">
+                        Category
+                      </span>{" "}
+                      • 8 Min Read
                     </p>
-                    <span className="text-xs text-gray-400">• {item.date}</span>
+                    <h4 className="text-2xl font-bold text-[#313131] leading-tight">
+                      {item.title}
+                    </h4>
+                    <div className="flex items-center gap-2 mt-2">
+                      <Image
+                        src="/assets/dp.jpg"
+                        alt="Author"
+                        width={33}
+                        height={32}
+                        className="rounded-full border border-white object-cover object-top w-[33px] h-[32.173px] flex-shrink-0"
+                      />
+                      <p className="text-[14px] text-[#5D5D5D] font-normal">
+                        Mr. Sheikh Saadi
+                      </p>
+                      <span className="text-[11px] text-[#747474]">
+                        • {item.date}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
