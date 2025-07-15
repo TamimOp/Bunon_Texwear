@@ -23,7 +23,7 @@ const articles = [
 const Articles = () => {
   return (
     <section
-      className="py-20 px-4 md:px-8 flex flex-col items-center"
+      className="py-20 px-4 md:px-8 pb-90 flex flex-col items-center"
       style={{
         background: "linear-gradient(180deg, #091442 0%, #002F6D 100%)",
       }}
@@ -31,8 +31,9 @@ const Articles = () => {
       <div className="max-w-screen-2xl w-full mx-auto">
         {/* Heading */}
         <p className="text-[#009BF3] text-2xl font-semibold">New Blog</p>
-        <h2 className="text-4xl md:text-[65px] font-bold text-white mt-2">
-          Articles About <span className="text-[#AEEE6A]">Garment</span> Textile
+        <h2 className="text-4xl md:text-[65px] font-bold text-white mt-2 leading-snug">
+          Articles About <br />
+          <span className="text-[#AEEE6A]">Garment</span> Textile
         </h2>
 
         {/* Main Blog Container */}

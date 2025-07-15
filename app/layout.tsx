@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Footer, { FooterContactSection } from "@/components/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,6 +25,23 @@ export default function RootLayout({
       <body className={`${poppins.variable} antialiased bg-[#0B1746]`}>
         <Navbar />
         {children}
+        <div
+          className="w-full relative"
+          style={{ height: "163px" /* half of 327px */ }}
+        >
+          <div
+            className="absolute left-1/2 -translate-x-1/2"
+            style={{
+              top: "-163px", // negative half height to overlap
+              width: "1062px",
+              height: "327px",
+              zIndex: 50,
+            }}
+          >
+            <FooterContactSection />
+          </div>
+        </div>
+
         <Footer />
       </body>
     </html>
