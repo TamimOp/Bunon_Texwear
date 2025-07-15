@@ -31,9 +31,9 @@ const Articles = () => {
         </h2>
 
         {/* Main Blog Container */}
-        <div className="relative mx-auto mt-16 flex flex-col md:flex-row rounded-[56px] bg-[#EDE9E6] overflow-visible w-full md:w-[1200px] md:h-[725px]">
+        <div className="relative mx-auto mt-16 flex flex-col md:flex-row rounded-[56px] bg-[#EDE9E6] overflow-visible w-full px-4 py-4 md:py-0 md:px-0 md:w-[1200px] h-auto md:h-[725px]">
           {/* Left Main Blog Card */}
-          <div className="flex flex-col justify-between p-5 rounded-[27px] bg-[#1A1A1A] overflow-hidden relative z-10 w-full md:w-[579px] h-auto md:h-[559px] mt-[30px] md:mt-[60px] ml-0 md:ml-[48px] flex-shrink-0">
+          <div className="flex flex-col justify-between p-4 md:p-5 rounded-[27px] bg-[#1A1A1A] overflow-hidden relative z-10 w-full max-w-full md:w-[579px] h-auto md:h-[559px] mt-[20px] md:mt-[60px] ml-0 md:ml-[48px] flex-shrink-0">
             <div className="mx-auto relative overflow-hidden w-full md:w-[533px] h-[200px] md:h-[300px] rounded-t-[24px] bg-[rgba(7,26,37,0.18)]">
               <Image
                 src="/assets/textile1.jpg"
@@ -72,17 +72,17 @@ const Articles = () => {
               <div
                 key={index}
                 className={`
-                flex items-center w-full
-                md:absolute
-                ${index === 0 ? "md:right-[90px] md:top-[100px]" : ""}
-                ${index === 1 ? "md:right-[50px] md:top-[90px]" : ""}
-                ${index === 2 ? "md:-right-[10px] md:top-[80px]" : ""}
-            `}
-                // On mobile: relative, stacked; On desktop: absolute, floated
-                style={{ position: "relative" }}
+            flex flex-col md:flex-row items-center w-full
+            md:absolute
+            ${index === 0 ? "md:right-[90px] md:top-[80px]" : ""}
+            ${index === 1 ? "md:right-[50px] md:top-[50px]" : ""}
+            ${index === 2 ? "md:-right-[15px] md:top-[20px]" : ""}
+            rounded-[15px] px-3 py-3
+        `}
+                style={{ position: "relative", background: "transparent" }}
               >
-                {/* Card Image with blue border and shadow */}
-                <div className="relative flex-shrink-0 w-full md:w-[223px] h-[120px] md:h-[153px] rounded-[15px] border-4 border-[#2D69D1] shadow-[4px_6px_24.9px_4px_rgba(0,0,0,0.5)] overflow-hidden bg-cover bg-center">
+                {/* Card Image */}
+                <div className="relative flex-shrink-0 w-full h-[120px] md:w-[223px] md:h-[153px] rounded-[15px] border-4 border-[#2D69D1] shadow-[4px_6px_24.9px_4px_rgba(0,0,0,0.5)] overflow-hidden bg-cover bg-center">
                   <Image
                     src={item.img}
                     alt={`card-${index}`}
@@ -92,14 +92,14 @@ const Articles = () => {
                   />
                 </div>
                 {/* Card Text */}
-                <div className="ml-3 md:ml-5 w-full md:w-[280px]">
-                  <p className="text-[16px] md:text-[19px] text-[#888888] mb-1">
-                    <span className="text-[#0055C4] font-normal text-[16px] md:text-[19px]">
+                <div className="mt-3 md:mt-0 ml-0 md:ml-5 w-full md:w-[280px]">
+                  <p className="text-[14px] md:text-[19px] text-[#888888] mb-1">
+                    <span className="text-[#0055C4] font-normal text-[14px] md:text-[19px]">
                       Category
                     </span>{" "}
                     • 8 Min Read
                   </p>
-                  <h4 className="text-lg md:text-2xl font-bold text-[#313131] leading-tight">
+                  <h4 className="text-base md:text-2xl font-bold text-[#313131] leading-tight">
                     {item.title}
                   </h4>
                   <div className="flex items-center gap-2 mt-2">
@@ -110,7 +110,7 @@ const Articles = () => {
                       height={24}
                       className="rounded-full border border-white object-cover object-top w-[24px] h-[24px] md:w-[33px] md:h-[32.173px] flex-shrink-0"
                     />
-                    <p className="text-[12px] md:text-[14px] text-[#5D5D5D] font-normal">
+                    <p className="text-[11px] md:text-[14px] text-[#5D5D5D] font-normal">
                       Mr. Sheikh Saadi
                     </p>
                     <span className="text-[10px] md:text-[11px] text-[#747474]">
