@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 const Review = () => {
   return (
     <section className="text-white py-10 sm:py-16 lg:py-20 px-4 sm:px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-center">
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-center px-4 sm:px-8 lg:px-16">
         {/* Left Side */}
         <div className="relative w-full max-w-[485px] h-[400px] sm:h-[500px] lg:w-[485px] lg:h-[670px] rounded-xl overflow-visible flex-shrink-0 mx-auto lg:mx-0">
           {/* Background Image */}

@@ -19,7 +19,7 @@ const Hero = () => {
         {/* Left Side Ellipse Background - 30% out of screen */}
         <div className="absolute top-1/3 -translate-y-1/2 -left-[10%] w-[400px] sm:w-[500px] lg:w-[575px] h-[400px] sm:h-[500px] lg:h-[580px] flex-shrink-0 rounded-full bg-[#091E6F] blur-[60px] sm:blur-[70px] lg:blur-[86.05px] -z-5"></div>
 
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 pt-24 sm:pt-32 md:pt-40 lg:pt-50 pb-8 sm:pb-12 lg:pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-20 pt-24 sm:pt-32 md:pt-40 lg:pt-50 pb-8 sm:pb-12 lg:pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
             <p className="text-[#009BF3] text-lg sm:text-xl lg:text-2xl font-medium">
