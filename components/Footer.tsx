@@ -6,46 +6,60 @@ import React from "react";
 // Contact Section Component
 const FooterContactSection = () => (
   <div
-    className="mx-auto flex flex-row items-center justify-between rounded-[18px] overflow-hidden"
+    className="
+      w-full
+      mx-auto
+      flex flex-col md:flex-row
+      items-center md:items-stretch
+      justify-between
+      rounded-[18px]
+      overflow-hidden
+      relative
+      z-30
+      px-4 py-6 md:px-0 md:py-0
+      bg-gradient-to-r from-[#0054C2] to-[#091544]
+      max-w-full
+      md:max-w-[1062px]
+      h-auto
+      md:h-[327px]
+      gap-6 md:gap-0
+    "
     style={{
-      width: "1062px",
-      height: "327px",
-      flexShrink: 0,
       borderRadius: "18px",
-      background: "linear-gradient(90deg, #0054C2 0%, #091544 100%)",
-      position: "relative",
-      zIndex: 30,
     }}
   >
     {/* Background Image */}
-    <Image
-      src="/assets/footerContactBg.png"
-      alt="Contact Section BG"
-      fill
-      className="object-cover z-0"
-      style={{ borderRadius: "18px" }}
-    />
+    <div className="absolute inset-0 w-full h-full z-0">
+      <Image
+        src="/assets/footerContactBg.png"
+        alt="Contact Section BG"
+        fill
+        className="object-cover"
+        style={{ borderRadius: "18px" }}
+      />
+    </div>
     {/* Left Side Text */}
-    <div className="relative z-10 flex-1 flex items-center pl-12">
-      <span className="text-white text-3xl font-semibold max-w-[350px]">
-        Let&apos;s start your project to be realize.
+    <div className="relative z-10 flex-1 flex items-center justify-center md:justify-start md:pl-12 py-2 md:py-0 w-full">
+      <span className="text-white text-lg sm:text-xl md:text-[46px] font-semibold max-w-full text-center md:text-left">
+        Let&apos;s start your <span className="text-[#AEEE6A]">project</span>to
+        be <span className="text-[#AEEE6A]">realize</span>.
       </span>
     </div>
     {/* Right Side Form */}
-    <div className="relative z-10 flex-1 flex flex-col items-end pr-12">
-      <form className="flex flex-col gap-5 w-full max-w-[350px]">
+    <div className="relative z-10 flex-1 flex flex-col items-center justify-center md:items-end md:justify-center md:pr-12 py-2 md:py-0 w-full">
+      <form className="flex flex-col gap-4 w-full max-w-full md:max-w-[350px]">
         <input
           type="email"
           placeholder="Your Email"
-          className="rounded-[7px] bg-white px-5 py-3 text-[#091544] text-base outline-none"
+          className="rounded-[7px] bg-white px-4 py-3 text-[#091544] text-base outline-none w-full"
         />
         <textarea
           placeholder="Type your message"
-          className="rounded-[7px] bg-white px-5 py-3 text-[#091544] text-base outline-none resize-none h-[80px]"
+          className="rounded-[7px] bg-white px-4 py-3 text-[#091544] text-base outline-none resize-none h-[80px] w-full"
         />
         <button
           type="submit"
-          className="rounded-[10px] bg-[#AEEE6A] text-[#091544] font-bold py-3 px-6 shadow-[7px_5px_33.9px_0px_#00817B] transition hover:bg-[#91d95a]"
+          className="rounded-[10px] bg-[#AEEE6A] text-[#091544] font-bold py-3 px-6 shadow-[7px_5px_33.9px_0px_#00817B] transition hover:bg-[#91d95a] w-full"
         >
           Contact Us
         </button>

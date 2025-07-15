@@ -26,15 +26,13 @@ export default function RootLayout({
         <Navbar />
         {children}
         <div
-          className="w-full relative"
-          style={{ height: "163px" /* half of 327px */ }}
+          className="relative w-full flex justify-center"
+          style={{ minHeight: "163px" }}
         >
           <div
-            className="absolute left-1/2 -translate-x-1/2"
+            className="absolute left-1/2 -translate-x-1/2 w-full max-w-full md:max-w-[1062px]"
             style={{
-              top: "-163px", // negative half height to overlap
-              width: "1062px",
-              height: "327px",
+              top: "-163px",
               zIndex: 50,
             }}
           >
