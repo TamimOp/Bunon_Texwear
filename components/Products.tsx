@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
 
 const productData = [
   { id: 1, src: "/assets/productImage1.jpg", label: "Hoodies" },
@@ -15,9 +18,47 @@ const productData = [
   { id: 5, src: "/assets/productImage5.jpg", label: "Jackets" },
 ];
 
+// Animation variants
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: 0.15 + i * 0.12,
+    },
+  }),
+};
+
 const Products = () => {
+  const ref = useRef(null);
+  const controls = useAnimation();
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [inView, controls]);
+
   return (
-    <section className="relative text-white py-20 md:py-30 overflow-hidden">
+    <motion.section
+      ref={ref}
+      variants={sectionVariants}
+      initial="hidden"
+      animate={controls}
+      className="relative text-white py-20 md:py-30 overflow-hidden"
+    >
       {/* Background Ellipses */}
       <div className="absolute bottom-0 right-0 z-0 pointer-events-none">
         <Image
@@ -39,23 +80,37 @@ const Products = () => {
       </div>
 
       {/* Title */}
-      <div className="text-start mb-8 md:mb-12 relative z-10 px-4 md:pl-16 lg:pl-25">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={controls}
+        className="text-start mb-8 md:mb-12 relative z-10 px-4 md:pl-16 lg:pl-25"
+      >
         <h2 className="text-3xl md:text-4xl lg:text-[54px] font-bold leading-tight lg:leading-snug">
           <span className="text-[#B4FF63]">Offering</span> a diverse range of{" "}
           <br className="hidden md:block" /> products.
         </h2>
-      </div>
+      </motion.div>
 
       {/* Product Cards */}
       <div className="flex justify-center gap-2 md:gap-6 flex-wrap xl:flex-nowrap px-4 max-w-7xl mx-auto relative z-10">
         {productData.map(({ id, src, label, featured }, index) => (
-          <div
+          <motion.div
             key={id}
+            custom={index}
+            variants={cardVariants}
+            initial="hidden"
+            animate={controls}
             className={`relative flex-shrink-0 rounded-[11px] overflow-hidden group border-0 border-white
               w-36 h-80 sm:w-40 sm:h-96 md:w-44 md:h-[400px] lg:w-[150px] lg:h-[430px] xl:w-[190.779px] xl:h-[517.221px]
               bg-gradient-to-b from-[rgba(35,109,132,0.06)] to-[#00250A]
               ${index === 1 || index === 3 ? "mt-4 md:mt-8" : ""}
             `}
+            whileHover={{
+              scale: 1.04,
+              boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)",
+            }}
+            whileTap={{ scale: 0.98 }}
           >
             {/* Image */}
             <div className="relative w-full h-full">
@@ -114,10 +169,10 @@ const Products = () => {
                 className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 hover:scale-110 transition-transform"
               />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
