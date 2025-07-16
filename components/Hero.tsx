@@ -25,12 +25,12 @@ const rightVariants: Variants = {
   },
 };
 
-const quoteVariants: Variants = {
+const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1, delay: 0.3, ease: "easeOut" },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
@@ -39,11 +39,19 @@ const Hero = () => {
   const controls = useAnimation();
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
+  // For Partnering text and logo section
+  const partnerRef = useRef(null);
+  const partnerControls = useAnimation();
+  const partnerInView = useInView(partnerRef, { once: true, margin: "-100px" });
+
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
-  }, [inView, controls]);
+    if (partnerInView) {
+      partnerControls.start("visible");
+    }
+  }, [inView, controls, partnerInView, partnerControls]);
 
   return (
     <>
@@ -142,7 +150,7 @@ const Hero = () => {
 
           {/* Quote Message Card */}
           <motion.div
-            variants={quoteVariants}
+            variants={fadeUpVariants}
             initial="hidden"
             animate={controls}
             className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[48%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20"
@@ -161,16 +169,27 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Partnering Text (no animation) */}
-        <div className="flex justify-center lg:justify-start max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 pb-8 sm:pb-12 lg:pb-0">
+        {/* Partnering Text (with animation) */}
+        <motion.div
+          ref={partnerRef}
+          variants={fadeUpVariants}
+          initial="hidden"
+          animate={partnerControls}
+          className="flex justify-center lg:justify-start max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 pb-8 sm:pb-12 lg:pb-0"
+        >
           <h2 className="w-full sm:w-[400px] lg:w-[458px] text-[#AEEE6A] font-light text-xl sm:text-2xl lg:text-[28px] leading-[118.4%] capitalize font-['Poppins'] text-center lg:text-left">
             Partnering with leading global brands.
           </h2>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Company Logos Section - No Background (no animation) */}
-      <section className="py-6 sm:py-8">
+      {/* Company Logos Section (with animation) */}
+      <motion.section
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate={partnerControls}
+        className="py-6 sm:py-8"
+      >
         <div className="mx-auto flex flex-col justify-center items-center w-full max-w-[1108px] px-4 sm:px-6 lg:px-[8.362px] py-6 sm:py-8 lg:h-[132px] gap-4 sm:gap-6 lg:gap-[8.362px] flex-shrink-0 rounded-[8px] sm:rounded-[10px] lg:rounded-[11px] bg-white">
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12">
             {[1, 2, 3, 4].map((num) => (
@@ -185,7 +204,7 @@ const Hero = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };
