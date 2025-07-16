@@ -2,8 +2,49 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useAnimation } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
+import { Variants } from "framer-motion";
+
+const leftVariants: Variants = {
+  hidden: { opacity: 0, x: -80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+const rightVariants: Variants = {
+  hidden: { opacity: 0, x: 80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+const quoteVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, delay: 0.3, ease: "easeOut" },
+  },
+};
 
 const Hero = () => {
+  const ref = useRef(null);
+  const controls = useAnimation();
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView, controls]);
+
   return (
     <>
       {/* Main Hero Section with Background */}
@@ -19,9 +60,17 @@ const Hero = () => {
         {/* Left Side Ellipse Background - 30% out of screen */}
         <div className="absolute top-1/3 -translate-y-1/2 -left-[10%] w-[400px] sm:w-[500px] lg:w-[575px] h-[400px] sm:h-[500px] lg:h-[580px] flex-shrink-0 rounded-full bg-[#091E6F] blur-[60px] sm:blur-[70px] lg:blur-[86.05px] -z-5"></div>
 
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-20 pt-24 sm:pt-32 md:pt-40 lg:pt-50 pb-8 sm:pb-12 lg:pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10">
+        <div
+          ref={ref}
+          className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-20 pt-24 sm:pt-32 md:pt-40 lg:pt-50 pb-8 sm:pb-12 lg:pb-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start relative z-10"
+        >
           {/* Left Content */}
-          <div className="order-2 lg:order-1">
+          <motion.div
+            variants={leftVariants}
+            initial="hidden"
+            animate={controls}
+            className="order-2 lg:order-1"
+          >
             <p className="text-[#009BF3] text-lg sm:text-xl lg:text-2xl font-medium">
               Welcome
             </p>
@@ -60,10 +109,15 @@ const Hero = () => {
                 contact sales team
               </Link>
             </p>
-          </div>
+          </motion.div>
 
           {/* Right: Gallery */}
-          <div className="relative flex gap-2 sm:gap-3 lg:gap-4 justify-center lg:justify-end order-1 lg:order-2">
+          <motion.div
+            variants={rightVariants}
+            initial="hidden"
+            animate={controls}
+            className="relative flex gap-2 sm:gap-3 lg:gap-4 justify-center lg:justify-end order-1 lg:order-2"
+          >
             {/* Background Ellipse */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] lg:w-[520px] h-[300px] sm:h-[400px] lg:h-[523px] flex-shrink-0 rounded-full bg-[#007EC8] blur-[60px] sm:blur-[80px] lg:blur-[100px] -z-10"></div>
 
@@ -84,10 +138,15 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-[rgba(38,147,247,0.18)] to-[rgba(66,128,0,0.19)] z-10"></div>
               </div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Quote Message Card */}
-          <div className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[48%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20">
+          <motion.div
+            variants={quoteVariants}
+            initial="hidden"
+            animate={controls}
+            className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[48%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20"
+          >
             <Image
               src="/assets/quote.svg"
               alt="quote"
@@ -99,10 +158,10 @@ const Hero = () => {
               Our mission is to <br />
               transform the way you design
             </p>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Partnering Text */}
+        {/* Partnering Text (no animation) */}
         <div className="flex justify-center lg:justify-start max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 pb-8 sm:pb-12 lg:pb-0">
           <h2 className="w-full sm:w-[400px] lg:w-[458px] text-[#AEEE6A] font-light text-xl sm:text-2xl lg:text-[28px] leading-[118.4%] capitalize font-['Poppins'] text-center lg:text-left">
             Partnering with leading global brands.
@@ -110,7 +169,7 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Company Logos Section - No Background */}
+      {/* Company Logos Section - No Background (no animation) */}
       <section className="py-6 sm:py-8">
         <div className="mx-auto flex flex-col justify-center items-center w-full max-w-[1108px] px-4 sm:px-6 lg:px-[8.362px] py-6 sm:py-8 lg:h-[132px] gap-4 sm:gap-6 lg:gap-[8.362px] flex-shrink-0 rounded-[8px] sm:rounded-[10px] lg:rounded-[11px] bg-white">
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12">

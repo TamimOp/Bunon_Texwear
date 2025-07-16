@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,8 +27,27 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  // Framer Motion: Animation controls and in-view detection
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.7, ease: "easeOut" },
+      });
+    }
+  }, [controls, inView]);
+
   return (
-    <nav className="w-full absolute top-0 left-0 z-50">
+    <motion.nav
+      ref={ref}
+      initial={{ y: -50, opacity: 0 }}
+      animate={controls}
+      className="w-full absolute top-0 left-0 z-50"
+    >
       <div className="px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex-shrink-0">
@@ -184,7 +205,7 @@ const Navbar = () => {
         {/* Close on background tap */}
         <div className="absolute inset-0 -z-10" onClick={toggleMenu} />
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
