@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
 
 const articles = [
   {
@@ -20,9 +23,45 @@ const articles = [
   },
 ];
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 120, scale: 0.92 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: 0.2 + i * 0.22,
+      duration: 0.85,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
 const Articles = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView, controls]);
+
   return (
-    <section
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 100, scale: 0.96 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+        },
+      }}
       className="py-20 px-4 md:px-8 pb-90 flex flex-col items-center"
       style={{
         background: "linear-gradient(180deg, #091442 0%, #002F6D 100%)",
@@ -39,7 +78,12 @@ const Articles = () => {
         {/* Main Blog Container */}
         <div className="relative mx-auto mt-16 flex flex-col md:flex-row rounded-[56px] bg-[#EDE9E6] overflow-visible w-full px-4 py-4 md:py-0 md:px-0 md:w-[1200px] h-auto md:h-[725px]">
           {/* Left Main Blog Card */}
-          <div className="flex flex-col justify-between p-4 md:p-5 rounded-[27px] bg-[#1A1A1A] overflow-hidden relative z-10 w-full max-w-full md:w-[579px] h-auto md:h-[559px] mt-[20px] md:mt-[60px] ml-0 md:ml-[48px] flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.97 }}
+            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col justify-between p-4 md:p-5 rounded-[27px] bg-[#1A1A1A] overflow-hidden relative z-10 w-full max-w-full md:w-[579px] h-auto md:h-[559px] mt-[20px] md:mt-[60px] ml-0 md:ml-[48px] flex-shrink-0"
+          >
             <div className="mx-auto relative overflow-hidden w-full md:w-[533px] h-[200px] md:h-[300px] rounded-t-[24px] bg-[rgba(7,26,37,0.18)]">
               <Image
                 src="/assets/textile1.jpg"
@@ -70,21 +114,25 @@ const Articles = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Floating Article Cards */}
           <div className="relative w-full flex flex-col gap-6 z-20 pointer-events-auto mt-8 md:mt-0">
             {articles.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                custom={index}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+                variants={cardVariants}
                 className={`
-            flex flex-col md:flex-row items-center w-full
-            md:absolute
-            ${index === 0 ? "md:right-[90px] md:top-[80px]" : ""}
-            ${index === 1 ? "md:right-[50px] md:top-[50px]" : ""}
-            ${index === 2 ? "md:right-[0px] md:top-[20px]" : ""}
-            rounded-[15px] px-3 py-3
-        `}
+                  flex flex-col md:flex-row items-center w-full
+                  md:absolute
+                  ${index === 0 ? "md:right-[90px] md:top-[80px]" : ""}
+                  ${index === 1 ? "md:right-[50px] md:top-[50px]" : ""}
+                  ${index === 2 ? "md:right-[0px] md:top-[20px]" : ""}
+                  rounded-[15px] px-3 py-3
+                `}
                 style={{ position: "relative", background: "transparent" }}
               >
                 {/* Card Image */}
@@ -124,12 +172,12 @@ const Articles = () => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
