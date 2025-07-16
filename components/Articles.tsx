@@ -165,7 +165,8 @@ const Articles = () => {
                     rounded-[15px] px-3 py-3
                     cursor-pointer
                     transition-all
-                    hover:ring-0 hover:border-transparent hover:bg-white/80 hover:shadow-xl hover:scale-105
+                    hover:ring-0 hover:border-transparent hover:bg-white/80 hover:scale-105
+                    hover:shadow-none
                   `}
                   style={{ position: "relative", background: "transparent" }}
                 >
