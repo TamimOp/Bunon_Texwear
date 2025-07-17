@@ -5,13 +5,29 @@ import React from "react";
 
 const AboutSectionFour = () => {
   return (
-    <section className="relative w-full bg-[#04133b] overflow-hidden text-white px-4 py-16 lg:py-28">
+    <section
+      className="relative w-full overflow-hidden text-white px-4 py-16 lg:py-28 lg:pb-70"
+      style={{
+        background: "linear-gradient(180deg, #0B1746 0%, #002F6D 100%)",
+      }}
+    >
       {/* Background Vector */}
       <Image
         src="/assets/AboutS4VectorBg.png"
         alt="Vector Background"
-        fill
+        fill={false}
+        width={206}
+        height={46}
         className="object-cover opacity-40 pointer-events-none z-0"
+        style={{
+          width: "206px",
+          height: "46px",
+          transform: "rotate(-37.195deg)",
+          flexShrink: 0,
+          position: "absolute",
+          left: "2rem",
+          top: "2rem",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -47,24 +63,41 @@ const AboutSectionFour = () => {
         </div>
 
         {/* Right Image & Experience Badge */}
-        <div className="relative flex-1 max-w-[500px]">
+        <div className="relative flex-1 max-w-[500px] flex justify-center items-center">
           {/* Experience Badge */}
-          <div className="absolute -top-10 -left-6 bg-[#1164a9] text-white px-6 py-4 rounded-xl shadow-lg z-10">
-            <div className="text-4xl font-bold flex items-start gap-1">
-              <span className="text-[#99db52] text-3xl">“</span>
+          <div
+            className="absolute -top-10 -left-6 px-3 py-3 rounded-xl shadow-lg z-10"
+            style={{ background: "#025697E3" }}
+          >
+            <div className="text-[55px] font-medium flex items-start gap-1">
+              <Image
+                src="/assets/quote.svg"
+                alt="Quote"
+                width={32}
+                height={32}
+                className="inline-block"
+              />
               25+
             </div>
-            <div className="text-sm font-medium">Years Experience</div>
+            <div className="text-lg font-medium">Years Experience</div>
           </div>
 
-          {/* Image with glow */}
-          <div className="rounded-2xl overflow-hidden shadow-[0px_0px_30px_rgba(0,0,0,0.4)] border border-white/10">
+          {/* Image with drop-shadow */}
+          <div
+            className="rounded-2xl overflow-hidden border border-white/10"
+            style={{
+              width: "450px",
+              height: "298px",
+              flexShrink: 0,
+              filter: "drop-shadow(4px 4px 30.3px rgba(255,255,255,0.78))",
+            }}
+          >
             <Image
               src="/assets/AboutS4Image.jpg"
               alt="Sampling Image"
-              width={600}
-              height={400}
-              className="object-cover w-full h-auto"
+              width={450}
+              height={298}
+              className="object-cover w-full h-full"
             />
           </div>
         </div>
