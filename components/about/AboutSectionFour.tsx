@@ -28,6 +28,22 @@ const AboutSectionFour = () => {
           bottom: "210px",
         }}
       />
+      <Image
+        src="/assets/GreenVectorBg.png"
+        alt="Vector Background"
+        fill={false}
+        width={506}
+        height={86}
+        className="object-contain opacity-100 pointer-events-none z-0"
+        style={{
+          width: "506px",
+          height: "150px",
+          flexShrink: 0,
+          position: "absolute",
+          right: "-90px",
+          top: "90px",
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Left Content */}
