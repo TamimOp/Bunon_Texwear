@@ -96,12 +96,12 @@ const Articles = () => {
           <span className="text-[#AEEE6A]">Garment</span> Textile
         </h2>
 
-        {/* Main Blog Container */}
         <div className="relative mx-auto mt-16 flex flex-col md:flex-row rounded-[56px] bg-[#EDE9E6] overflow-visible w-full px-4 py-4 md:py-0 md:px-0 md:w-[1200px] h-auto md:h-[725px]">
-          {/* Left Main Blog Card */}
+          {/* Main Blog Card with layoutId */}
           <motion.div
             key={currentMain.id}
             layout
+            layoutId={`blog-card-${currentMain.id}`}
             initial={{ opacity: 0, y: 60, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 60, scale: 0.97 }}
@@ -140,13 +140,14 @@ const Articles = () => {
             </div>
           </motion.div>
 
-          {/* Floating Article Cards */}
+          {/* Right Cards */}
           <div className="relative w-full flex flex-col gap-6 z-20 pointer-events-auto mt-8 md:mt-0">
             <AnimatePresence initial={false}>
               {rightCards.map((item, index) => (
                 <motion.div
                   key={item.id}
                   layout
+                  layoutId={`blog-card-${item.id}`}
                   custom={index}
                   initial="hidden"
                   animate={inView ? "visible" : "hidden"}
