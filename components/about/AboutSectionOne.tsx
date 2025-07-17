@@ -50,7 +50,7 @@ const AboutSectionOne = () => {
         {/* Right Image Group */}
         <div className="relative flex-1 w-full max-w-xl min-h-[450px]">
           {/* Main Image */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl ring-2 ring-[#2A83FF]">
+          <div className="rounded-2xl overflow-hidden shadow-2xl ring-2 ring-[#2A83FF] relative">
             <Image
               src="/assets/AboutS1Image1.jpg"
               alt="main shop"
@@ -58,43 +58,92 @@ const AboutSectionOne = () => {
               height={400}
               className="w-full h-auto object-cover"
             />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(0,129,201,0.12) 0%, rgba(0,51,161,0.75) 100%)",
+                pointerEvents: "none",
+              }}
+            />
           </div>
 
           {/* Floating Quote Card */}
-          <div className="absolute top-[-30px] left-[30px] bg-[#0070C0] text-white rounded-xl p-4 w-72 shadow-xl z-30">
-            <div className="flex gap-2 items-start mb-2">
-              <Image
-                src="/assets/quote.svg"
-                alt="quote"
-                width={20}
-                height={20}
-              />
-              <p className="text-sm leading-snug font-medium">
-                We’re Not Just About Moving Things From One Place To Another. We
-                Analyse Each Customer’s Needs, Anticipate Challenges, Design
-                Options And Set Up Contingency Plans So They Never Have To Worry
-                About The Journey.
-              </p>
-            </div>
+          <div
+            className="absolute top-[-20px] left-[-90px] rounded-xl p-4 shadow-xl z-30 flex flex-col items-start justify-center overflow-hidden"
+            style={{
+              background: "#025697E3",
+              flexShrink: 0,
+            }}
+          >
+            <Image
+              src="/assets/quote.svg"
+              alt="quote"
+              width={24}
+              height={24}
+              className="mb-2"
+            />
+            <p className="text-[10px] text-white leading-tight font-medium break-words max-w-full max-h-full">
+              We’re Not Just About Moving Things <br />
+              From One Place To Another. We <br />
+              Analyse Each Customer’s Needs,
+              <br /> Anticipate Challenges, Design Options <br /> And Set Up
+              Contingency Plans So <br /> They Never Have To Worry About The{" "}
+              <br />
+              Journey.
+            </p>
           </div>
 
           {/* Floating Right Cards */}
-          <div className="absolute -bottom-8 right-0 flex flex-col gap-4 items-end z-20">
+          <div className="absolute bottom-[-32px] right-0 w-[400px] h-[170px] z-20">
             {[
-              "AboutS1Image2.jpg",
-              "AboutS1Image3.jpg",
-              "AboutS1Image4.jpg",
-            ].map((img, i) => (
+              {
+                img: "AboutS1Image2.jpg",
+                right: "150px",
+                bottom: "0px",
+                z: 30,
+              },
+              {
+                img: "AboutS1Image3.jpg",
+                right: "40px",
+                bottom: "30px",
+                z: 20,
+              },
+              {
+                img: "AboutS1Image4.jpg",
+                right: "-60px",
+                bottom: "60px",
+                z: 10,
+              },
+            ].map((card, i) => (
               <div
                 key={i}
-                className={`w-[160px] h-[120px] rounded-xl overflow-hidden ring-2 ring-[#2A83FF] bg-white shadow-xl`}
+                className="absolute rounded-xl overflow-hidden bg-white"
+                style={{
+                  width: "124px",
+                  height: "157.604px",
+                  flexShrink: 0,
+                  filter: "drop-shadow(3px 4px 15.7px rgba(0, 103, 224, 0.82))",
+                  border: "2px solid #2A83FF",
+                  right: card.right,
+                  bottom: card.bottom,
+                  zIndex: card.z,
+                }}
               >
                 <Image
-                  src={`/assets/${img}`}
+                  src={`/assets/${card.img}`}
                   alt={`about-float-${i}`}
-                  width={160}
-                  height={120}
+                  width={124}
+                  height={158}
                   className="w-full h-full object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,129,201,0.12) 0%, rgba(0,51,161,0.75) 100%)",
+                    pointerEvents: "none",
+                  }}
                 />
               </div>
             ))}
