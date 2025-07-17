@@ -13,20 +13,19 @@ const AboutSectionFour = () => {
     >
       {/* Background Vector */}
       <Image
-        src="/assets/AboutS4VectorBg.png"
+        src="/assets/BlueVectorBg.png"
         alt="Vector Background"
         fill={false}
-        width={206}
-        height={46}
-        className="object-cover opacity-40 pointer-events-none z-0"
+        width={506}
+        height={86}
+        className="object-contain opacity-100 pointer-events-none z-0"
         style={{
-          width: "206px",
-          height: "46px",
-          transform: "rotate(-37.195deg)",
+          width: "506px",
+          height: "150px",
           flexShrink: 0,
           position: "absolute",
-          left: "2rem",
-          top: "2rem",
+          left: "-90px",
+          bottom: "210px",
         }}
       />
 
