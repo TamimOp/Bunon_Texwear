@@ -6,7 +6,7 @@ import React from "react";
 const AboutSectionFour = () => {
   return (
     <section
-      className="relative w-full overflow-hidden text-white px-4 py-16 lg:py-28 lg:pb-70"
+      className="relative w-full overflow-hidden text-white px-4 py-16 lg:py-28 pb-70 lg:pb-70"
       style={{
         background: "linear-gradient(180deg, #0B1746 0%, #002F6D 100%)",
       }}
@@ -54,7 +54,7 @@ const AboutSectionFour = () => {
           </div>
 
           {/* Info Box */}
-          <div className="bg-[#1164a9] text-white p-6 rounded-md max-w-lg relative z-10 shadow-lg">
+          <div className="bg-[#0069BA91] text-white p-6 rounded-md max-w-lg relative z-10 shadow-lg">
             <p className="text-sm leading-relaxed">
               Usually We Need 7–15 Days For The Sample Program. It`S Depends On
               Fabric Availability & Print/Embroidery Design (If Any).
@@ -63,10 +63,10 @@ const AboutSectionFour = () => {
         </div>
 
         {/* Right Image & Experience Badge */}
-        <div className="relative flex-1 max-w-[500px] flex justify-center items-center">
+        <div className="relative flex-1 max-w-[500px] flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:justify-center">
           {/* Experience Badge */}
           <div
-            className="absolute -top-10 -left-6 px-3 py-3 rounded-xl shadow-lg z-10"
+            className="absolute md:-top-10 md:-left-6 top-2 left-1 px-5 py-3 rounded-xl shadow-lg z-10 leading-tight"
             style={{ background: "#025697E3" }}
           >
             <div className="text-[55px] font-medium flex items-start gap-1">
@@ -84,7 +84,7 @@ const AboutSectionFour = () => {
 
           {/* Image with drop-shadow */}
           <div
-            className="rounded-2xl overflow-hidden border border-white/10"
+            className="rounded-2xl overflow-hidden border border-white/10 w-full max-w-[95vw] md:max-w-none mt-24 md:mt-0"
             style={{
               width: "450px",
               height: "298px",
@@ -98,6 +98,7 @@ const AboutSectionFour = () => {
               width={450}
               height={298}
               className="object-cover w-full h-full"
+              sizes="(max-width: 768px) 95vw, 450px"
             />
           </div>
         </div>
