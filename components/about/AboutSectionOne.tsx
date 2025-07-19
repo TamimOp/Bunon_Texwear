@@ -37,6 +37,7 @@ const AboutSectionOne = () => {
 
   const [mainImage, setMainImage] = useState(initialMain);
   const [floatingCards, setFloatingCards] = useState(initialCards);
+  const [autoIndex, setAutoIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,6 +60,16 @@ const AboutSectionOne = () => {
     };
     setFloatingCards(newCards);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (floatingCards.length > 0) {
+        handleCardClick(autoIndex);
+        setAutoIndex((prev) => (prev + 1) % floatingCards.length);
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [floatingCards, autoIndex]);
 
   return (
     <section className="relative w-full h-full pt-16 pb-10 md:pt-30 md:pb-20">
