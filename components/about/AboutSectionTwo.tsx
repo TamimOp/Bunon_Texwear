@@ -1,14 +1,25 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function AboutSectionTwo() {
   return (
-    <section
+    <motion.section
       className="relative px-4 sm:px-6 py-10 sm:py-16 lg:py-40 lg:px-20 text-white overflow-hidden"
       style={{
         background:
           "linear-gradient(180deg, #0B1746 0%, #070F2D 55.95%, #000 100%)",
+      }}
+      initial={{ opacity: 0, y: 80, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{
+        duration: 1.6,
+        ease: [0.22, 1, 0.36, 1],
+        type: "spring",
+        stiffness: 60,
+        damping: 18,
       }}
     >
       {/* Background Vectors */}
@@ -41,9 +52,27 @@ export default function AboutSectionTwo() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 relative z-10">
+      <motion.div
+        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
         {/* Left Side - Image with floating quote */}
-        <div className="relative w-full flex justify-center lg:justify-start">
+        <motion.div
+          className="relative w-full flex justify-center lg:justify-start"
+          initial={{ opacity: 0, x: -60, scale: 0.97 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           <div
             className="rounded-lg overflow-visible shadow-2xl relative"
             style={{
@@ -63,9 +92,16 @@ export default function AboutSectionTwo() {
               sizes="(max-width: 600px) 100vw, 450px"
             />
             {/* Quote Box */}
-            <div
+            <motion.div
               className="absolute bottom-4 left-0 lg:-left-10 rounded-md w-60 max-w-[90vw] shadow-lg text-white p-4 pr-6"
               style={{ background: "#025697C7" }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.7 }}
+              transition={{
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             >
               <div className="flex gap-2 items-start mb-2">
                 <Image
@@ -78,12 +114,21 @@ export default function AboutSectionTwo() {
               <p className="text-[15px] pl-4 pb-2 font-medium leading-snug">
                 Our mission is to <br /> transform the way you <br /> design
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side - Text Content */}
-        <div className="flex flex-col justify-center mt-8 lg:mt-0">
+        <motion.div
+          className="flex flex-col justify-center mt-8 lg:mt-0"
+          initial={{ opacity: 0, x: 60, scale: 0.97 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           <h2 className="text-4xl md:text-[54px] font-normal mb-6">
             Our <span className="text-[#98E263]">Journey</span>
           </h2>
@@ -93,11 +138,20 @@ export default function AboutSectionTwo() {
             Of Circular Knit Garments Field, We Are Committed To One Stop
             Sourcing Service To Our Valued Customer.
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Bottom White Card */}
-      <div className="mt-10 md:mt-16 relative z-10">
+      <motion.div
+        className="mt-10 md:mt-16 relative z-10"
+        initial={{ opacity: 0, y: 40, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
         <div className="bg-white text-[#0B0F2F] rounded-xl shadow-xl px-4 sm:px-10 py-6 sm:py-8 flex flex-col sm:flex-row justify-between items-center gap-6 max-w-5xl mx-auto text-center sm:text-left">
           {/* Box 1 */}
           <div className="flex flex-row items-center gap-3">
@@ -127,7 +181,7 @@ export default function AboutSectionTwo() {
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
