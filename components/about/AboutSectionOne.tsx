@@ -2,9 +2,41 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const AboutSectionOne = () => {
   const [isMobile, setIsMobile] = useState(false);
+
+  const initialMain = {
+    img: "/assets/AboutS1Image1.jpg",
+    alt: "main shop",
+  };
+  const initialCards = [
+    {
+      img: "/assets/AboutS1Image2.jpg",
+      alt: "float 1",
+      right: "150px",
+      bottom: "0px",
+      z: 30,
+    },
+    {
+      img: "/assets/AboutS1Image3.jpg",
+      alt: "float 2",
+      right: "40px",
+      bottom: "30px",
+      z: 20,
+    },
+    {
+      img: "/assets/AboutS1Image4.jpg",
+      alt: "float 3",
+      right: "-60px",
+      bottom: "60px",
+      z: 10,
+    },
+  ];
+
+  const [mainImage, setMainImage] = useState(initialMain);
+  const [floatingCards, setFloatingCards] = useState(initialCards);
 
   useEffect(() => {
     const handleResize = () => {
@@ -14,6 +46,19 @@ const AboutSectionOne = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleCardClick = (index: number) => {
+    const clickedCard = floatingCards[index];
+    setMainImage({ img: clickedCard.img, alt: clickedCard.alt });
+    const newCards = [...floatingCards];
+    newCards[index] = {
+      ...mainImage,
+      right: clickedCard.right,
+      bottom: clickedCard.bottom,
+      z: clickedCard.z,
+    };
+    setFloatingCards(newCards);
+  };
 
   return (
     <section className="relative w-full h-full pt-16 pb-10 md:pt-30 md:pb-20">
@@ -62,10 +107,15 @@ const AboutSectionOne = () => {
         {/* Right Image Group */}
         <div className="relative flex-1 w-full max-w-xl min-h-[250px] md:min-h-[450px]">
           {/* Main Image */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl ring-2 ring-[#2A83FF] relative w-full h-[180px] md:h-[400px]">
+          <motion.div
+            key={mainImage.img}
+            layout
+            layoutId={`about-main-card-${mainImage.img}`}
+            className="rounded-2xl overflow-hidden shadow-2xl ring-2 ring-[#2A83FF] relative w-full h-[180px] md:h-[400px]"
+          >
             <Image
-              src="/assets/AboutS1Image1.jpg"
-              alt="main shop"
+              src={mainImage.img}
+              alt={mainImage.alt}
               fill
               className="object-cover w-full h-full"
               sizes="(max-width: 768px) 100vw, 600px"
@@ -78,7 +128,7 @@ const AboutSectionOne = () => {
                 pointerEvents: "none",
               }}
             />
-          </div>
+          </motion.div>
 
           {/* Floating Quote Card */}
           <div
@@ -122,62 +172,56 @@ const AboutSectionOne = () => {
 
           {/* Floating Right Cards */}
           <div className="absolute bottom-[-16px] md:bottom-[-32px] right-0 w-full md:w-[400px] h-[120px] md:h-[170px] z-20 flex md:block justify-center gap-2">
-            {[
-              {
-                img: "AboutS1Image2.jpg",
-                right: "150px",
-                bottom: "0px",
-                z: 30,
-              },
-              {
-                img: "AboutS1Image3.jpg",
-                right: "40px",
-                bottom: "30px",
-                z: 20,
-              },
-              {
-                img: "AboutS1Image4.jpg",
-                right: "-60px",
-                bottom: "60px",
-                z: 10,
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className={`rounded-xl overflow-hidden bg-white ${
-                  isMobile ? "static" : "absolute"
-                } ${i === 0 ? "static md:absolute" : ""}`}
-                style={{
-                  width: isMobile ? "90px" : "124px",
-                  height: isMobile ? "110px" : "157.604px",
-                  flexShrink: 0,
-                  filter: "drop-shadow(3px 4px 15.7px rgba(0, 103, 224, 0.82))",
-                  border: "2px solid #2A83FF",
-                  right: isMobile ? undefined : card.right,
-                  bottom: isMobile ? undefined : card.bottom,
-                  zIndex: card.z,
-                  position: isMobile ? "static" : "absolute",
-                  marginRight: isMobile ? "8px" : undefined,
-                }}
-              >
-                <Image
-                  src={`/assets/${card.img}`}
-                  alt={`about-float-${i}`}
-                  width={124}
-                  height={158}
-                  className="w-full h-full object-cover"
-                  sizes="(max-width: 768px) 80vw, 124px"
-                />
-                <div
-                  className="absolute inset-0"
+            <AnimatePresence initial={false}>
+              {floatingCards.map((card, i) => (
+                <motion.div
+                  key={card.img}
+                  layout
+                  layoutId={`about-main-card-${card.img}`}
+                  initial={{ opacity: 0, y: 60, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 60, scale: 0.97 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className={`rounded-xl overflow-hidden bg-white ${
+                    isMobile ? "static" : "absolute"
+                  } ${i === 0 ? "static md:absolute" : ""} cursor-pointer`}
                   style={{
-                    background:
-                      "linear-gradient(180deg, rgba(0,129,201,0.12) 0%, rgba(0,51,161,0.75) 100%)",
-                    pointerEvents: "none",
+                    width: isMobile ? "90px" : "124px",
+                    height: isMobile ? "110px" : "157.604px",
+                    flexShrink: 0,
+                    filter:
+                      "drop-shadow(3px 4px 15.7px rgba(0, 103, 224, 0.82))",
+                    border: "2px solid #2A83FF",
+                    right: isMobile ? undefined : card.right,
+                    bottom: isMobile ? undefined : card.bottom,
+                    zIndex: card.z,
+                    position: isMobile ? "static" : "absolute",
+                    marginRight: isMobile ? "8px" : undefined,
                   }}
-                />
-              </div>
-            ))}
+                  onClick={() => handleCardClick(i)}
+                  tabIndex={0}
+                  role="button"
+                  aria-pressed={false}
+                >
+                  <Image
+                    src={card.img}
+                    alt={card.alt}
+                    width={124}
+                    height={158}
+                    className="w-full h-full object-cover"
+                    sizes="(max-width: 768px) 80vw, 124px"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(0,129,201,0.12) 0%, rgba(0,51,161,0.75) 100%)",
+                      pointerEvents: "none",
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </div>
