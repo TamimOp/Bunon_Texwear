@@ -85,17 +85,24 @@ const AboutSectionOne = () => {
       <div className="relative z-30 max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-20 flex flex-col lg:flex-row gap-10 items-center">
         {/* Left Content */}
         <div className="flex-1 text-white">
-          <h2 className="text-3xl md:text-5xl font-bold leading-snug">
-            <span className="text-[#B4FF63]">About</span>{" "}
+          <h2 className="text-3xl md:text-[65px] font-semibold leading-snug">
+            <span className="text-[#AEEE6A]">About</span>{" "}
             <span className="text-white">Us :</span>
           </h2>
-          <p className="mt-4 md:mt-6 text-base md:text-lg leading-relaxed max-w-xl text-white/90">
+          <p className="mt-4 md:mt-6 text-base md:text-[21px] leading-relaxed max-w-xl text-white/90">
             We Are Specialized In Circular Knit Garments Field. From Basic To
             Fashion Item We Do Various Type Product With Different Type Of Yarn
             Composition & Fabric Construction.
           </p>
           <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4 md:gap-6 flex-wrap">
-            <button className="bg-gradient-to-r from-[#0F92FF] to-[#2AE1FF] text-white font-semibold px-4 md:px-6 py-2 md:py-3 rounded-full shadow-lg">
+            <button
+              className="text-white font-semibold px-4 md:px-6 py-2 md:py-3"
+              style={{
+                borderRadius: "42px",
+                background: "linear-gradient(90deg, #0082C9 0%, #0052C4 100%)",
+                boxShadow: "5px 4px 17.5px 0px rgba(0, 130, 201, 0.51)",
+              }}
+            >
               View more details
             </button>
             <button className="border border-white text-white font-semibold px-4 md:px-6 py-2 md:py-3 rounded-full">
@@ -153,7 +160,7 @@ const AboutSectionOne = () => {
               height={24}
               className="mb-2"
             />
-            <p className="text-[11px] md:text-[10px] text-white leading-tight font-medium break-words max-w-full max-h-full">
+            <p className="text-[11px] md:text-sm text-white leading-tight font-medium break-words max-w-full max-h-full">
               <span className="block md:hidden">
                 We’re Not Just About Moving Things. We analyse your needs and
                 set up contingency plans so you never have to worry.
