@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const cards = [
@@ -41,6 +42,11 @@ const cards = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+};
+
 const AboutSectionThree = () => {
   return (
     <section
@@ -54,10 +60,21 @@ const AboutSectionThree = () => {
           Working <span className="text-[#AEEE6A]">process</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {cards.map((card, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={cardVariants}
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+                delay: index * 0.15,
+              }}
               className="bg-[#003E8987] rounded-xl p-6 border-[4px] border-[#085592] hover:shadow-xl transition-all duration-300"
             >
               <div className="flex justify-center mb-4">
@@ -74,9 +91,9 @@ const AboutSectionThree = () => {
               <p className="text-[#C4D0E3] text-sm leading-relaxed">
                 {card.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

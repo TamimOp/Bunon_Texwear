@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
@@ -45,9 +46,27 @@ const AboutSectionFour = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
         {/* Left Content */}
-        <div className="flex-1">
+        <motion.div
+          className="flex-1"
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           <h2 className="text-4xl lg:text-5xl font-semibold leading-tight mb-4">
             Our <span className="text-[#99db52]">SAMPLING</span>
             <br />
@@ -75,10 +94,19 @@ const AboutSectionFour = () => {
               Fabric Availability & Print/Embroidery Design (If Any).
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Image & Experience Badge */}
-        <div className="relative flex-1 max-w-[500px] flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:justify-center">
+        <motion.div
+          className="relative flex-1 max-w-[500px] flex flex-col items-center justify-center gap-6 md:flex-row md:items-center md:justify-center"
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           {/* Experience Badge */}
           <div
             className="absolute md:-top-10 md:-left-6 top-2 left-1 px-5 py-3 rounded-xl shadow-lg z-10 leading-tight"
@@ -116,8 +144,8 @@ const AboutSectionFour = () => {
               sizes="(max-width: 768px) 95vw, 450px"
             />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
