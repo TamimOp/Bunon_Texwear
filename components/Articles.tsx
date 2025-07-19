@@ -59,6 +59,32 @@ const Articles = () => {
     if (inView) controls.start("visible");
   }, [inView, controls]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Always use the latest state
+      setRightCards((prevRightCards) => {
+        setCurrentMain((prevMain) => {
+          if (
+            prevRightCards.length > 0 &&
+            prevRightCards[0].id !== prevMain.id
+          ) {
+            // Same logic as handleCardClick(0)
+            const newMain = prevRightCards[0];
+            const newRightCards = prevRightCards.filter((_, i) => i !== 0);
+            const updatedRightCards = [...newRightCards];
+            updatedRightCards.splice(2, 0, prevMain);
+            // Update rightCards and currentMain
+            setRightCards(updatedRightCards.slice(0, 3));
+            return newMain;
+          }
+          return prevMain;
+        });
+        return prevRightCards;
+      });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleCardClick = (index: number) => {
     if (rightCards[index].id === currentMain.id) return;
     const newMain = rightCards[index];
@@ -119,7 +145,7 @@ const Articles = () => {
             </div>
             <div className="p-4 md:p-8 flex flex-col justify-between flex-1">
               <p className="text-green-400 text-base mb-2">
-                Category • 8 Min Read
+                Category <span className="text-[#888888]">• 8 Min Read </span>
               </p>
               <h3 className="text-white text-xl md:text-2xl font-bold leading-tight mb-4">
                 {currentMain.title}
