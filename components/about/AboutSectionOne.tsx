@@ -82,9 +82,19 @@ const AboutSectionOne = () => {
         className="absolute w-full h-full object-cover z-20"
       />
 
-      <div className="relative z-30 max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-20 flex flex-col lg:flex-row gap-10 items-center">
+      <motion.div className="relative z-30 max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-20 flex flex-col lg:flex-row gap-10 items-center">
         {/* Left Content */}
-        <div className="flex-1 text-white">
+        <motion.div
+          className="flex-1 text-white"
+          initial={{ opacity: 0, x: -80, scale: 0.98 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{
+            duration: 1.8,
+            ease: [0.22, 1, 0.36, 1],
+            type: "tween",
+          }}
+        >
           <h2 className="text-3xl md:text-[65px] font-semibold leading-snug">
             <span className="text-[#AEEE6A]">About</span>{" "}
             <span className="text-white">Us :</span>
@@ -96,7 +106,7 @@ const AboutSectionOne = () => {
           </p>
           <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4 md:gap-6 flex-wrap">
             <button
-              className="text-white font-semibold px-4 md:px-6 py-2 md:py-3"
+              className="text-white font-semibold px-4 md:px-6 py-2 md:py-3 transition-all duration-300 hover:scale-105 hover:shadow-lg"
               style={{
                 borderRadius: "42px",
                 background: "linear-gradient(90deg, #0082C9 0%, #0052C4 100%)",
@@ -109,10 +119,20 @@ const AboutSectionOne = () => {
               Buy product
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Image Group */}
-        <div className="relative flex-1 w-full max-w-xl min-h-[250px] md:min-h-[450px]">
+        <motion.div
+          className="relative flex-1 w-full max-w-xl min-h-[250px] md:min-h-[450px]"
+          initial={{ opacity: 0, x: 80, scale: 0.98 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{
+            duration: 1.8,
+            ease: [0.22, 1, 0.36, 1],
+            type: "tween",
+          }}
+        >
           {/* Main Image */}
           <motion.div
             key={mainImage.img}
@@ -189,7 +209,7 @@ const AboutSectionOne = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 60, scale: 0.97 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className={`rounded-xl overflow-hidden bg-white ${
+                  className={`rounded-xl overflow-hidden bg-white transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                     isMobile ? "static" : "absolute"
                   } ${i === 0 ? "static md:absolute" : ""} cursor-pointer`}
                   style={{
@@ -230,8 +250,8 @@ const AboutSectionOne = () => {
               ))}
             </AnimatePresence>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
