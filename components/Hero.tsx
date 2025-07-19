@@ -77,7 +77,7 @@ const Hero = () => {
             variants={leftVariants}
             initial="hidden"
             animate={controls}
-            className="order-2 lg:order-1"
+            className="order-1 lg:order-1"
           >
             <p className="text-[#009BF3] text-lg sm:text-xl lg:text-2xl font-medium">
               Welcome
@@ -124,7 +124,7 @@ const Hero = () => {
             variants={rightVariants}
             initial="hidden"
             animate={controls}
-            className="relative flex gap-2 sm:gap-3 lg:gap-4 justify-center lg:justify-end order-1 lg:order-2"
+            className="relative flex gap-2 sm:gap-3 lg:gap-4 justify-center lg:justify-end order-2 lg:order-2"
           >
             {/* Background Ellipse */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] lg:w-[520px] h-[300px] sm:h-[400px] lg:h-[523px] flex-shrink-0 rounded-full bg-[#007EC8] blur-[60px] sm:blur-[80px] lg:blur-[100px] -z-10"></div>
@@ -153,7 +153,7 @@ const Hero = () => {
             variants={fadeUpVariants}
             initial="hidden"
             animate={controls}
-            className="absolute bottom-120 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[48%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20"
+            className="absolute bottom-5 right-2 sm:bottom-12 sm:left-[50%] lg:bottom-16 lg:left-[48%] sm:translate-x-[-50%] lg:translate-x-0 text-white flex flex-col items-start p-3 sm:p-4 w-[160px] sm:w-[220px] lg:w-[241px] h-[100px] sm:h-[130px] lg:h-[135.498px] flex-shrink-0 rounded-[8px] sm:rounded-[12px] lg:rounded-[13px] bg-[rgba(2,86,151,0.78)] z-20"
           >
             <Image
               src="/assets/quote.svg"
