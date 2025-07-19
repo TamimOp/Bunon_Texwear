@@ -54,6 +54,7 @@ const Articles = () => {
 
   const [currentMain, setCurrentMain] = useState(mainBlog);
   const [rightCards, setRightCards] = useState(articles);
+  const [autoIndex, setAutoIndex] = useState(0);
 
   useEffect(() => {
     if (inView) controls.start("visible");
@@ -61,29 +62,17 @@ const Articles = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Always use the latest state
-      setRightCards((prevRightCards) => {
-        setCurrentMain((prevMain) => {
-          if (
-            prevRightCards.length > 0 &&
-            prevRightCards[0].id !== prevMain.id
-          ) {
-            // Same logic as handleCardClick(0)
-            const newMain = prevRightCards[0];
-            const newRightCards = prevRightCards.filter((_, i) => i !== 0);
-            const updatedRightCards = [...newRightCards];
-            updatedRightCards.splice(2, 0, prevMain);
-            // Update rightCards and currentMain
-            setRightCards(updatedRightCards.slice(0, 3));
-            return newMain;
-          }
-          return prevMain;
-        });
-        return prevRightCards;
-      });
+      if (rightCards.length > 0) {
+        handleCardClick(autoIndex);
+        setAutoIndex((prev) => (prev + 1) % rightCards.length);
+      }
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [rightCards, autoIndex]);
+
+  useEffect(() => {
+    setAutoIndex(0);
+  }, [rightCards]);
 
   const handleCardClick = (index: number) => {
     if (rightCards[index].id === currentMain.id) return;
