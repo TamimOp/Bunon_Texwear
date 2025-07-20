@@ -1,9 +1,36 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+
+const blogs = [
+  {
+    img: "/assets/textile1.jpg",
+    author: "Jhon",
+    date: "Oct 25, 2021",
+    title: "Style Caring is The New Marketing",
+    desc: "We are specialized in circular knit garments field. From basic to fashion item we do various type product with different type of yarn composition & fabric construction.",
+  },
+  {
+    img: "/assets/textile2.jpg",
+    author: "Sarah",
+    date: "Nov 10, 2021",
+    title: "Eco-Friendly Fabrics for Future",
+    desc: "Discover how sustainable materials are shaping the textile industry. We focus on eco-friendly production and innovative design for a better tomorrow.",
+  },
+  {
+    img: "/assets/textile4.jpg",
+    author: "Mike",
+    date: "Dec 5, 2021",
+    title: "Trends in todays Modern Textile",
+    desc: "Explore the latest trends in textile technology and fashion. Our team brings you insights from the world of modern garment manufacturing and modern innovations.",
+  },
+];
 
 const BlogSectionOne = () => {
+  const [active, setActive] = useState(0);
+
   return (
-    <section className="relative w-full min-h-screen text-white overflow-hidden py-60 px-4 lg:px-20">
+    <section className="relative w-full min-h-screen text-white overflow-hidden py-35 px-4 lg:px-20">
       {/* Background Vector */}
       <Image
         src="/assets/HeroVectorBg.png"
@@ -17,13 +44,13 @@ const BlogSectionOne = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 relative z-10">
         {/* Left Side Text */}
         <div className="w-full lg:w-1/2 text-white">
-          <h2 className="text-5xl font-bold">
-            Our <span className="text-[#89DB5C]">Blog</span>
+          <h2 className="text-[65px] font-semibold">
+            Our <span className="text-[#AEEE6A]">Blog</span>
           </h2>
 
           {/* Author Row */}
           <div className="flex items-center gap-3 mt-8">
-            <div className="w-10 h-10 rounded-full overflow-hidden aspect-square">
+            <div className="w-10 h-10 rounded-full overflow-hidden aspect-square border border-white">
               <Image
                 src="/assets/dp.jpg"
                 alt="Author"
@@ -33,21 +60,21 @@ const BlogSectionOne = () => {
               />
             </div>
             <div>
-              <p className="font-semibold">Jhon</p>
-              <p className="text-sm text-gray-300">Oct 25, 2021</p>
+              <p className="text-[#CCCCCC] text-lg font-semibold">
+                {blogs[active].author}
+              </p>
+              <p className="text-[19px] text-[#888888]">{blogs[active].date}</p>
             </div>
           </div>
 
           {/* Title */}
-          <h3 className="text-4xl lg:text-5xl font-bold mt-6 leading-tight">
-            Style Caring is The <br /> New Marketing
+          <h3 className="text-4xl lg:text-[54px] font-semibold mt-3 leading-snug">
+            {blogs[active].title}
           </h3>
 
           {/* Description */}
-          <p className="text-lg text-gray-300 mt-6 leading-relaxed">
-            We are specialized in circular knit garments field. From basic to
-            fashion item we do various type product with different type of yarn
-            composition & fabric construction.
+          <p className="text-[21px] font-light text-[#F9FAFB] mt-3 leading-relaxed">
+            {blogs[active].desc}
           </p>
 
           {/* Button */}
@@ -57,10 +84,12 @@ const BlogSectionOne = () => {
         </div>
 
         {/* Right Side Image */}
-        <div className="w-full lg:w-[550px] h-auto">
-          <div className="rounded-[15px] border-[3px] border-white bg-[rgba(7,26,37,0.18)] overflow-hidden shadow-lg">
+        <div className="w-full lg:w-[550px] h-auto relative">
+          {/* Ellipse Background */}
+          <div className="absolute -top-20 -right-20 w-[580px] h-[580px] rounded-full bg-[rgba(255,255,255,0.23)] blur-[86.05px] -z-10"></div>
+          <div className="rounded-[15px] border-[3px] border-white bg-[rgba(7,26,37,0.18)] overflow-hidden shadow-lg relative z-10">
             <Image
-              src="/assets/textile1.jpg"
+              src={blogs[active].img}
               alt="Blog Image"
               width={600}
               height={400}
@@ -70,11 +99,20 @@ const BlogSectionOne = () => {
         </div>
       </div>
 
-      {/* Background Dots (Carousel indicators) */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-        <span className="w-3 h-3 rounded-full bg-white/50"></span>
-        <span className="w-3 h-3 rounded-full bg-white/90"></span>
-        <span className="w-3 h-3 rounded-full bg-white/50"></span>
+      {/* Carousel Dots - just below the blogs */}
+      <div className="flex items-center justify-center gap-2 mt-20">
+        {blogs.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActive(idx)}
+            className={`transition-all duration-200 ${
+              active === idx
+                ? "w-[23px] h-[23px] bg-white"
+                : "w-[16px] h-[16px] bg-[#B8B8B8]"
+            } rounded-full border-none outline-none`}
+            aria-label={`Go to blog ${idx + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
