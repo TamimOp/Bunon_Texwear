@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const blogs = [
   {
@@ -28,6 +28,13 @@ const blogs = [
 
 const BlogSectionOne = () => {
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % blogs.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative w-full min-h-screen text-white overflow-hidden py-35 px-4 lg:px-20">
