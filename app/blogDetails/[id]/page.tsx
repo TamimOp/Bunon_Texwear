@@ -8,7 +8,7 @@ const blogData = [
     date: "Oct 25, 2021",
     title: "Style Caring is The New Marketing",
     desc: "We are specialized in circular knit garments field. From basic to fashion item we do various type product with different type of yarn composition & fabric construction.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ const blogData = [
     date: "Nov 10, 2021",
     title: "The Future of Fashion",
     desc: "Exploring the latest trends and technologies shaping the future of the fashion industry.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "3",
@@ -26,7 +26,7 @@ const blogData = [
     date: "Dec 5, 2021",
     title: "Sustainable Fashion: A Necessity",
     desc: "Discussing the importance of sustainability in fashion and how to achieve it.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "4",
@@ -35,7 +35,7 @@ const blogData = [
     date: "Jan 20, 2022",
     title: "Fashion Marketing in the Digital Age",
     desc: "How digital marketing is revolutionizing the fashion industry.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "5",
@@ -44,7 +44,7 @@ const blogData = [
     date: "Feb 15, 2022",
     title: "The Art of Fashion Photography",
     desc: "Explore the art of content creation, including blog writing, video production, graphic design, and storytelling techniques. Offer guidance on developing content strategies, optimizing content for search engines and social media, and creating engaging multimedia content that resonates with target audiences across different platforms.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "6",
@@ -53,7 +53,7 @@ const blogData = [
     date: "Mar 10, 2022",
     title: "Breaking into the Fashion Industry",
     desc: "Tips and tricks for aspiring fashion professionals to break into the industry.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "7",
@@ -62,7 +62,7 @@ const blogData = [
     date: "Apr 5, 2022",
     title: "The Evolution of Fashion Trends",
     desc: "A look back at the fashion trends that have shaped the industry over the decades.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
   {
     id: "8",
@@ -71,15 +71,11 @@ const blogData = [
     date: "May 1, 2022",
     title: "Glamour and Grunge: A Fashion Paradox",
     desc: "Exploring the contrasting elements of glamour and grunge in modern fashion.",
-    dpp: "/assets/dp.jpg",
+    dp: "/assets/dp.jpg",
   },
 ];
 
-export default async function BlogDetails({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function Page({ params }: { params: { id: string } }) {
   const awaitedParams = await params;
   const blog = blogData.find((b) => b.id === awaitedParams.id);
 
@@ -93,7 +89,7 @@ export default async function BlogDetails({
         <h1 className="text-[54px] font-semibold mb-3">{blog.title}</h1>
         <div className="flex items-center gap-3 mb-6">
           <Image
-            src={blog.dpp}
+            src={blog.dp}
             alt={blog.author}
             width={40}
             height={40}
