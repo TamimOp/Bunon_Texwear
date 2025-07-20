@@ -75,7 +75,11 @@ const blogData = [
   },
 ];
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const awaitedParams = await params;
   const blog = blogData.find((b) => b.id === awaitedParams.id);
 
@@ -84,9 +88,15 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   return (
-    <section className="w-full min-h-screen py-50 px-6 pb-100 lg:px-50 bg-[#091544] text-white">
+    <section
+      className="w-full min-h-screen py-50 px-6 pb-100 lg:px-50 text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #0B1746 0%, #070F2D 55.95%, #000 100%)",
+      }}
+    >
       <div className="mx-auto">
-        <h1 className="text-[54px] font-semibold mb-3">{blog.title}</h1>
+        <h1 className="text-[54px] font-semibold mb-6">{blog.title}</h1>
         <div className="flex items-center gap-3 mb-6">
           <Image
             src={blog.dp}
@@ -118,6 +128,18 @@ export default async function Page({ params }: { params: { id: string } }) {
           />
         </div>
         <p className="text-[23px] font-medium leading-relaxed">{blog.desc}</p>
+        <br />
+        <h1 className="text-[31px] font-semibold mb-4">
+          Digital Marketing Strategies:
+        </h1>
+        <p className="text-[23px] font-medium leading-relaxed">
+          Educate your audience on digital advertising platforms such as Google
+          Ads, Facebook Ads, LinkedIn Ads, and Twitter Ads. Share tips and best
+          practices for creating effective ad campaigns, targeting specific
+          audiences, optimizing ad performance, and maximizing return on ad
+          spend (ROAS). Discuss emerging trends in paid advertising and
+          strategies for achieving cost-effective results.
+        </p>
       </div>
     </section>
   );
