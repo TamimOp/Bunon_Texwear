@@ -7,7 +7,7 @@ const blogData = [
     author: "Mr. Sheikh Saadi",
     date: "Oct 25, 2021",
     title: "Style Caring is The New Marketing",
-    desc: "We are specialized in circular knit garments field. From basic to fashion item we do various type product with different type of yarn composition & fabric construction.",
+    desc: "We are specialized in circular knit garments field. From basic to fashion item we do various type product with different type of yarn composition & fabric construction. Our commitment to quality and innovation drives us to constantly improve our processes and products. We believe in sustainable practices and work closely with our partners to ensure ethical sourcing and production. With a dedicated team of professionals, we strive to exceed customer expectations and deliver garments that not only look good but also feel comfortable and last longer. Whether you are looking for everyday basics or the latest fashion trends, our diverse product range has something for everyone.",
     dp: "/assets/dp.jpg",
   },
   {
@@ -16,7 +16,7 @@ const blogData = [
     author: "Mr. John Doe",
     date: "Nov 10, 2021",
     title: "The Future of Fashion",
-    desc: "Exploring the latest trends and technologies shaping the future of the fashion industry.",
+    desc: "Exploring the latest trends and technologies shaping the future of the fashion industry. From smart textiles and wearable technology to eco-friendly materials and digital design, the fashion world is evolving rapidly. Designers and brands are embracing innovation to create unique, functional, and sustainable garments. The integration of artificial intelligence and data analytics is transforming how collections are developed and marketed, offering personalized experiences to consumers. As the industry moves forward, collaboration and adaptability will be key to staying ahead in a competitive market.",
     dp: "/assets/dp.jpg",
   },
   {
@@ -25,7 +25,7 @@ const blogData = [
     author: "Ms. Jane Doe",
     date: "Dec 5, 2021",
     title: "Sustainable Fashion: A Necessity",
-    desc: "Discussing the importance of sustainability in fashion and how to achieve it.",
+    desc: "Discussing the importance of sustainability in fashion and how to achieve it. Sustainable fashion is not just a trend but a responsibility for brands and consumers alike. By choosing eco-friendly materials, reducing waste, and supporting fair labor practices, the industry can minimize its environmental impact. Education and transparency are crucial in helping consumers make informed choices. Innovative recycling techniques and circular production models are paving the way for a greener future, ensuring that fashion remains both stylish and ethical.",
     dp: "/assets/dp.jpg",
   },
   {
