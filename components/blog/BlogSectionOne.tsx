@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const blogs = [
   {
@@ -36,8 +38,21 @@ const BlogSectionOne = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Framer Motion setup
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <section className="relative w-full min-h-screen text-white overflow-hidden py-35 px-4 lg:px-20">
+    <section
+      ref={ref}
+      className="relative w-full min-h-screen text-white overflow-hidden py-35 px-4 lg:px-20"
+    >
       {/* Background Vector */}
       <Image
         src="/assets/HeroVectorBg.png"
@@ -50,7 +65,19 @@ const BlogSectionOne = () => {
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 relative z-10">
         {/* Left Side Text */}
-        <div className="w-full lg:w-1/2 text-white">
+        <motion.div
+          className="w-full lg:w-1/2 text-white"
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, x: -80 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { duration: 0.8, ease: "easeOut" },
+            },
+          }}
+        >
           <h2 className="text-[65px] font-semibold">
             Our <span className="text-[#AEEE6A]">Blog</span>
           </h2>
@@ -88,10 +115,26 @@ const BlogSectionOne = () => {
           <button className="mt-8 px-6 py-3 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-[#021144] transition">
             Read More
           </button>
-        </div>
+        </motion.div>
 
         {/* Right Side Image */}
-        <div className="w-full lg:w-[550px] h-auto relative">
+        <motion.div
+          className="w-full lg:w-[550px] h-auto relative"
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, x: 80 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: {
+                duration: 0.8,
+                ease: "easeOut",
+                delay: 0.2,
+              },
+            },
+          }}
+        >
           {/* Ellipse Background */}
           <div className="absolute -top-20 -right-20 w-[580px] h-[580px] rounded-full bg-[rgba(255,255,255,0.23)] blur-[86.05px] -z-10"></div>
           <div className="rounded-[15px] border-[3px] border-white bg-[rgba(7,26,37,0.18)] overflow-hidden shadow-lg relative z-10">
@@ -103,10 +146,10 @@ const BlogSectionOne = () => {
               className="object-cover w-full h-auto"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Carousel Dots - just below the blogs */}
+      {/* Carousel Dots */}
       <div className="flex items-center justify-center gap-2 mt-20">
         {blogs.map((_, idx) => (
           <button

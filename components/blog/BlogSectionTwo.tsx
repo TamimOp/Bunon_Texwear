@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const blogData = [
   {
@@ -79,8 +82,28 @@ const blogData = [
 ];
 
 export default function BlogSectionTwo() {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <section
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 60 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.7, ease: "easeOut" },
+        },
+      }}
       className="w-full py-16 px-6 lg:px-20 pb-60"
       style={{
         background:
@@ -101,9 +124,33 @@ export default function BlogSectionTwo() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {blogData.map((blog) => (
+          {blogData.map((blog, idx) => (
             <Link href={`/blogDetails/${blog.id}`} key={blog.id}>
-              <div className="bg-[#081152] rounded-xl p-2 pb-4 hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <motion.div
+                className="bg-[#081152] rounded-xl p-2 pb-4 hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                initial="hidden"
+                animate={controls}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 60,
+                    scale: 0.85,
+                    rotate: -8,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotate: 0,
+                    transition: {
+                      duration: 0.7,
+                      delay: 0.18 * idx,
+                      type: "spring",
+                      stiffness: 120,
+                    },
+                  },
+                }}
+              >
                 <div className="rounded-xl overflow-hidden">
                   <Image
                     src={blog.image}
@@ -141,11 +188,11 @@ export default function BlogSectionTwo() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </Link>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
