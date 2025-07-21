@@ -20,7 +20,7 @@ const boxes = [
 
 export default function ContactInfoBoxes() {
   return (
-    <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 py-10">
+    <div className="hidden md:flex w-full flex-col md:flex-row items-center justify-center gap-8 py-10">
       {boxes.map((box) => (
         <div
           key={box.title}
