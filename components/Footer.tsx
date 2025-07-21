@@ -142,22 +142,23 @@ const Footer = () => {
         <Image
           src="/assets/GroupFooterBg.png"
           alt="footer bg"
-          fill
-          className="absolute top-0 left-0 object-cover z-0"
+          width={752}
+          height={340}
+          className="absolute bottom-35 left-50 object-cover z-0"
         />
         <Image
           src="/assets/VectorGroupFooter.png"
           alt="vector 1"
           width={1097}
           height={384}
-          className="absolute top-0 right-0 w-full h-full object-contain z-10"
+          className="absolute top-0 right-0 w-full h-full object-cover z-10"
         />
         <Image
           src="/assets/VectorGroupFooter2.png"
           alt="vector 2"
-          width={1097}
-          height={384}
-          className="absolute bottom-0 left-0 w-full h-full object-cover z-20"
+          width={1066}
+          height={348}
+          className="absolute top-0 right-0 w-full h-full object-center z-20"
         />
 
         <div className="relative flex flex-col lg:flex-row justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 text-sm sm:text-base">
