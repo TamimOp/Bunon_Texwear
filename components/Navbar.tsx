@@ -13,7 +13,6 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -21,13 +20,11 @@ const Navbar = () => {
       document.body.style.overflow = "unset";
     }
 
-    // Cleanup function to reset overflow when component unmounts
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
 
-  // Framer Motion: Animation controls and in-view detection
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -51,13 +48,15 @@ const Navbar = () => {
       <div className="px-4 sm:px-6 lg:px-12 py-4 flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex-shrink-0">
-          <Image
-            src="/assets/BunonLogo.png"
-            alt="Bunon Logo"
-            width={109}
-            height={94}
-            className="object-contain w-16 h-12 sm:w-20 sm:h-14 lg:w-[109px] lg:h-[94px]"
-          />
+          <Link href="/" aria-label="Home">
+            <Image
+              src="/assets/BunonLogo.png"
+              alt="Bunon Logo"
+              width={109}
+              height={94}
+              className="object-contain w-16 h-12 sm:w-20 sm:h-14 lg:w-[109px] lg:h-[94px]"
+            />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -148,13 +147,15 @@ const Navbar = () => {
         >
           {/* Logo in center */}
           <div className="mb-12">
-            <Image
-              src="/assets/BunonLogo.png"
-              alt="Bunon Logo"
-              width={150}
-              height={120}
-              className="object-contain opacity-90"
-            />
+            <Link href="/" aria-label="Home" onClick={toggleMenu}>
+              <Image
+                src="/assets/BunonLogo.png"
+                alt="Bunon Logo"
+                width={150}
+                height={120}
+                className="object-contain opacity-90"
+              />
+            </Link>
           </div>
 
           {/* Navigation Links */}
