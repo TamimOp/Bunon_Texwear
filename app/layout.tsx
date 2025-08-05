@@ -26,17 +26,8 @@ export default function RootLayout({
       <body className={`${poppins.variable} antialiased bg-[#0B1746]`}>
         <Navbar />
         {children}
-        <div
-          className="relative w-full flex justify-center"
-          style={{ minHeight: "163px" }}
-        >
-          <div
-            className="absolute left-1/2 -translate-x-1/2 w-full max-w-full md:max-w-[1062px]"
-            style={{
-              top: "-163px",
-              zIndex: 50,
-            }}
-          >
+        <div className="relative w-full flex justify-center min-h-[163px]">
+          <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-full md:max-w-[1062px] -top-[163px] z-50">
             <FooterContactSwitcher />
           </div>
         </div>
